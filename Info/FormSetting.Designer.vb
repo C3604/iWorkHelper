@@ -25,14 +25,10 @@ Partial Class FormSetting
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormSetting))
         Me.TabSetting = New System.Windows.Forms.TabControl()
         Me.TabPageInvoice = New System.Windows.Forms.TabPage()
+        Me.RadioButtonOCROffline = New System.Windows.Forms.RadioButton()
+        Me.LabelOCRMode = New System.Windows.Forms.Label()
+        Me.RadioButtonOCROnline = New System.Windows.Forms.RadioButton()
         Me.ButtonHelp = New System.Windows.Forms.Button()
-        Me.CheckBoxTempMode = New System.Windows.Forms.CheckBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.LabelOtherinfo = New System.Windows.Forms.Label()
-        Me.LabelLicenseData = New System.Windows.Forms.Label()
-        Me.LabelLicenseMail = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.CheckBoxShowToken = New System.Windows.Forms.CheckBox()
         Me.TextBoxClientSecret = New System.Windows.Forms.TextBox()
         Me.TextBoxClientId = New System.Windows.Forms.TextBox()
@@ -68,14 +64,10 @@ Partial Class FormSetting
         '
         'TabPageInvoice
         '
+        Me.TabPageInvoice.Controls.Add(Me.RadioButtonOCROffline)
+        Me.TabPageInvoice.Controls.Add(Me.LabelOCRMode)
+        Me.TabPageInvoice.Controls.Add(Me.RadioButtonOCROnline)
         Me.TabPageInvoice.Controls.Add(Me.ButtonHelp)
-        Me.TabPageInvoice.Controls.Add(Me.CheckBoxTempMode)
-        Me.TabPageInvoice.Controls.Add(Me.Label4)
-        Me.TabPageInvoice.Controls.Add(Me.Label2)
-        Me.TabPageInvoice.Controls.Add(Me.LabelOtherinfo)
-        Me.TabPageInvoice.Controls.Add(Me.LabelLicenseData)
-        Me.TabPageInvoice.Controls.Add(Me.LabelLicenseMail)
-        Me.TabPageInvoice.Controls.Add(Me.Label1)
         Me.TabPageInvoice.Controls.Add(Me.CheckBoxShowToken)
         Me.TabPageInvoice.Controls.Add(Me.TextBoxClientSecret)
         Me.TabPageInvoice.Controls.Add(Me.TextBoxClientId)
@@ -94,6 +86,40 @@ Partial Class FormSetting
         Me.TabPageInvoice.Text = "发票"
         Me.TabPageInvoice.UseVisualStyleBackColor = True
         '
+        'RadioButtonOCROffline
+        '
+        Me.RadioButtonOCROffline.AutoSize = True
+        Me.RadioButtonOCROffline.Enabled = False
+        Me.RadioButtonOCROffline.Location = New System.Drawing.Point(259, 132)
+        Me.RadioButtonOCROffline.Name = "RadioButtonOCROffline"
+        Me.RadioButtonOCROffline.Size = New System.Drawing.Size(178, 19)
+        Me.RadioButtonOCROffline.TabIndex = 16
+        Me.RadioButtonOCROffline.TabStop = True
+        Me.RadioButtonOCROffline.Text = "离线模式（暂不可用）"
+        Me.RadioButtonOCROffline.UseVisualStyleBackColor = True
+        '
+        'LabelOCRMode
+        '
+        Me.LabelOCRMode.AutoSize = True
+        Me.LabelOCRMode.Location = New System.Drawing.Point(27, 132)
+        Me.LabelOCRMode.Name = "LabelOCRMode"
+        Me.LabelOCRMode.Size = New System.Drawing.Size(61, 15)
+        Me.LabelOCRMode.TabIndex = 15
+        Me.LabelOCRMode.Text = "OCR模式"
+        '
+        'RadioButtonOCROnline
+        '
+        Me.RadioButtonOCROnline.AutoSize = True
+        Me.RadioButtonOCROnline.Checked = True
+        Me.RadioButtonOCROnline.Enabled = False
+        Me.RadioButtonOCROnline.Location = New System.Drawing.Point(111, 130)
+        Me.RadioButtonOCROnline.Name = "RadioButtonOCROnline"
+        Me.RadioButtonOCROnline.Size = New System.Drawing.Size(88, 19)
+        Me.RadioButtonOCROnline.TabIndex = 14
+        Me.RadioButtonOCROnline.TabStop = True
+        Me.RadioButtonOCROnline.Text = "在线模式"
+        Me.RadioButtonOCROnline.UseVisualStyleBackColor = True
+        '
         'ButtonHelp
         '
         Me.ButtonHelp.Image = Global.XYOutlookPlugin.My.Resources.Resources.Help
@@ -103,81 +129,10 @@ Partial Class FormSetting
         Me.ButtonHelp.TabIndex = 13
         Me.ButtonHelp.UseVisualStyleBackColor = True
         '
-        'CheckBoxTempMode
-        '
-        Me.CheckBoxTempMode.AutoSize = True
-        Me.CheckBoxTempMode.Location = New System.Drawing.Point(30, 332)
-        Me.CheckBoxTempMode.Name = "CheckBoxTempMode"
-        Me.CheckBoxTempMode.Size = New System.Drawing.Size(89, 19)
-        Me.CheckBoxTempMode.TabIndex = 12
-        Me.CheckBoxTempMode.Text = "临时模式"
-        Me.CheckBoxTempMode.UseVisualStyleBackColor = True
-        Me.CheckBoxTempMode.Visible = False
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(156, 336)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(75, 15)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "许可备注:"
-        Me.Label4.Visible = False
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(156, 314)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(75, 15)
-        Me.Label2.TabIndex = 7
-        Me.Label2.Text = "有效期至:"
-        Me.Label2.Visible = False
-        '
-        'LabelOtherinfo
-        '
-        Me.LabelOtherinfo.AutoSize = True
-        Me.LabelOtherinfo.Location = New System.Drawing.Point(235, 336)
-        Me.LabelOtherinfo.Name = "LabelOtherinfo"
-        Me.LabelOtherinfo.Size = New System.Drawing.Size(127, 15)
-        Me.LabelOtherinfo.TabIndex = 8
-        Me.LabelOtherinfo.Text = "暂无许可备注信息"
-        Me.LabelOtherinfo.Visible = False
-        '
-        'LabelLicenseData
-        '
-        Me.LabelLicenseData.AutoSize = True
-        Me.LabelLicenseData.Location = New System.Drawing.Point(235, 314)
-        Me.LabelLicenseData.Name = "LabelLicenseData"
-        Me.LabelLicenseData.Size = New System.Drawing.Size(112, 15)
-        Me.LabelLicenseData.TabIndex = 9
-        Me.LabelLicenseData.Text = "未识别到有效期"
-        Me.LabelLicenseData.Visible = False
-        '
-        'LabelLicenseMail
-        '
-        Me.LabelLicenseMail.AutoSize = True
-        Me.LabelLicenseMail.Location = New System.Drawing.Point(237, 291)
-        Me.LabelLicenseMail.Name = "LabelLicenseMail"
-        Me.LabelLicenseMail.Size = New System.Drawing.Size(97, 15)
-        Me.LabelLicenseMail.TabIndex = 10
-        Me.LabelLicenseMail.Text = "未授权的用户"
-        Me.LabelLicenseMail.Visible = False
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(155, 291)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(75, 15)
-        Me.Label1.TabIndex = 11
-        Me.Label1.Text = "程序授权:"
-        Me.Label1.Visible = False
-        '
         'CheckBoxShowToken
         '
         Me.CheckBoxShowToken.AutoSize = True
-        Me.CheckBoxShowToken.Location = New System.Drawing.Point(30, 295)
+        Me.CheckBoxShowToken.Location = New System.Drawing.Point(30, 342)
         Me.CheckBoxShowToken.Name = "CheckBoxShowToken"
         Me.CheckBoxShowToken.Size = New System.Drawing.Size(89, 19)
         Me.CheckBoxShowToken.TabIndex = 3
@@ -186,7 +141,7 @@ Partial Class FormSetting
         '
         'TextBoxClientSecret
         '
-        Me.TextBoxClientSecret.Location = New System.Drawing.Point(111, 249)
+        Me.TextBoxClientSecret.Location = New System.Drawing.Point(111, 296)
         Me.TextBoxClientSecret.Name = "TextBoxClientSecret"
         Me.TextBoxClientSecret.Size = New System.Drawing.Size(439, 25)
         Me.TextBoxClientSecret.TabIndex = 1
@@ -194,7 +149,7 @@ Partial Class FormSetting
         '
         'TextBoxClientId
         '
-        Me.TextBoxClientId.Location = New System.Drawing.Point(111, 192)
+        Me.TextBoxClientId.Location = New System.Drawing.Point(111, 239)
         Me.TextBoxClientId.Name = "TextBoxClientId"
         Me.TextBoxClientId.Size = New System.Drawing.Size(439, 25)
         Me.TextBoxClientId.TabIndex = 1
@@ -203,7 +158,7 @@ Partial Class FormSetting
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(24, 252)
+        Me.Label8.Location = New System.Drawing.Point(24, 299)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(87, 15)
         Me.Label8.TabIndex = 0
@@ -212,7 +167,7 @@ Partial Class FormSetting
         'TextBoxOCRRequestAddress
         '
         Me.TextBoxOCRRequestAddress.Enabled = False
-        Me.TextBoxOCRRequestAddress.Location = New System.Drawing.Point(111, 135)
+        Me.TextBoxOCRRequestAddress.Location = New System.Drawing.Point(111, 182)
         Me.TextBoxOCRRequestAddress.Name = "TextBoxOCRRequestAddress"
         Me.TextBoxOCRRequestAddress.Size = New System.Drawing.Size(439, 25)
         Me.TextBoxOCRRequestAddress.TabIndex = 1
@@ -220,7 +175,7 @@ Partial Class FormSetting
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(24, 195)
+        Me.Label7.Location = New System.Drawing.Point(24, 242)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(63, 15)
         Me.Label7.TabIndex = 0
@@ -239,7 +194,7 @@ Partial Class FormSetting
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(24, 138)
+        Me.Label6.Location = New System.Drawing.Point(24, 185)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(67, 15)
         Me.Label6.TabIndex = 0
@@ -366,30 +321,26 @@ Partial Class FormSetting
     End Sub
 
     Friend WithEvents TabSetting As Windows.Forms.TabControl
-    Friend WithEvents TabPageInvoice As Windows.Forms.TabPage
     Friend WithEvents ButtonSubmit As Windows.Forms.Button
     Friend WithEvents ButtonCancel As Windows.Forms.Button
     Friend WithEvents ButtonSave As Windows.Forms.Button
     Friend WithEvents CheckBoxdebug As Windows.Forms.CheckBox
     Friend WithEvents CheckBoxlog As Windows.Forms.CheckBox
-    Friend WithEvents Label3 As Windows.Forms.Label
-    Friend WithEvents ButtonBrowserpath As Windows.Forms.Button
-    Friend WithEvents TextBoxArchivePath As Windows.Forms.TextBox
+    Friend WithEvents Buttonlog As Windows.Forms.Button
+    Friend WithEvents ButtonEmptySetting As Windows.Forms.Button
+    Friend WithEvents TabPageInvoice As Windows.Forms.TabPage
+    Friend WithEvents ButtonHelp As Windows.Forms.Button
+    Friend WithEvents CheckBoxShowToken As Windows.Forms.CheckBox
     Friend WithEvents TextBoxClientSecret As Windows.Forms.TextBox
     Friend WithEvents TextBoxClientId As Windows.Forms.TextBox
     Friend WithEvents Label8 As Windows.Forms.Label
     Friend WithEvents TextBoxOCRRequestAddress As Windows.Forms.TextBox
     Friend WithEvents Label7 As Windows.Forms.Label
+    Friend WithEvents ButtonBrowserpath As Windows.Forms.Button
     Friend WithEvents Label6 As Windows.Forms.Label
-    Friend WithEvents CheckBoxShowToken As Windows.Forms.CheckBox
-    Friend WithEvents Buttonlog As Windows.Forms.Button
-    Friend WithEvents Label4 As Windows.Forms.Label
-    Friend WithEvents Label2 As Windows.Forms.Label
-    Friend WithEvents LabelOtherinfo As Windows.Forms.Label
-    Friend WithEvents LabelLicenseData As Windows.Forms.Label
-    Friend WithEvents LabelLicenseMail As Windows.Forms.Label
-    Friend WithEvents Label1 As Windows.Forms.Label
-    Friend WithEvents CheckBoxTempMode As Windows.Forms.CheckBox
-    Friend WithEvents ButtonEmptySetting As Windows.Forms.Button
-    Friend WithEvents ButtonHelp As Windows.Forms.Button
+    Friend WithEvents TextBoxArchivePath As Windows.Forms.TextBox
+    Friend WithEvents Label3 As Windows.Forms.Label
+    Friend WithEvents LabelOCRMode As Windows.Forms.Label
+    Friend WithEvents RadioButtonOCROnline As Windows.Forms.RadioButton
+    Friend WithEvents RadioButtonOCROffline As Windows.Forms.RadioButton
 End Class

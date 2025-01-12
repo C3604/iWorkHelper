@@ -41,5 +41,8 @@
     <Setting Name="ArchivePath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\</Value>
     </Setting>
+    <Setting Name="OCRMode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BiduOCR</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

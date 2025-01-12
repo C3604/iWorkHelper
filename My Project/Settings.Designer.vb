@@ -207,6 +207,18 @@ Namespace My
                 Me("ArchivePath") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("BiduOCR")>  _
+        Public Property OCRMode() As String
+            Get
+                Return CType(Me("OCRMode"),String)
+            End Get
+            Set
+                Me("OCRMode") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

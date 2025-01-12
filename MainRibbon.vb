@@ -14,4 +14,8 @@ Public Class MainRibbon
         Dim settingForm As New FormSetting()
         settingForm.ShowDialog()
     End Sub
+
+    Private Sub ButtonHelp_Click(sender As Object, e As RibbonControlEventArgs) Handles ButtonHelp.Click
+        ShowHelpDocument.ShowHelpDocument()
+    End Sub
 End Class
