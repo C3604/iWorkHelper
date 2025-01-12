@@ -342,6 +342,7 @@
     </Compile>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="README.MD" />
     <None Include="Resources\OutlookPluginHelpDocument_V0_1.pdf" />
     <None Include="ThisAddIn.Designer.xml">
       <DependentUpon>ThisAddIn.vb</DependentUpon>
