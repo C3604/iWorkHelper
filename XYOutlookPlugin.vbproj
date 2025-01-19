@@ -310,10 +310,10 @@
   <ItemGroup>
     <AppDesigner Include="My Project\" />
     <Compile Include="app.Designer.vb" />
-    <Compile Include="Info\FormSetting.Designer.vb">
-      <DependentUpon>FormSetting.vb</DependentUpon>
+    <Compile Include="Info\Form_Settings.Designer.vb">
+      <DependentUpon>Form_Settings.vb</DependentUpon>
     </Compile>
-    <Compile Include="Info\FormSetting.vb">
+    <Compile Include="Info\Form_Settings.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Info\ShowHelpDocument.vb" />
@@ -351,8 +351,8 @@
       <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <EmbeddedResource Include="Info\FormSetting.resx">
-      <DependentUpon>FormSetting.vb</DependentUpon>
+    <EmbeddedResource Include="Info\Form_Settings.resx">
+      <DependentUpon>Form_Settings.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Invoicearchive\BiduOCR\MailProgressBarForm.resx">
       <DependentUpon>MailProgressBarForm.vb</DependentUpon>

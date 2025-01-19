@@ -57,29 +57,66 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property LicenseMail() As String
+        Public Property archivePath() As String
             Get
-                Return CType(Me("LicenseMail"),String)
+                Return CType(Me("archivePath"),String)
             End Get
             Set
-                Me("LicenseMail") = value
+                Me("archivePath") = value
             End Set
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property LicenseData() As String
+        Public Property OCRMode() As String
             Get
-                Return CType(Me("LicenseData"),String)
+                Return CType(Me("OCRMode"),String)
             End Get
             Set
-                Me("LicenseData") = value
+                Me("OCRMode") = value
             End Set
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property RequestUrl() As String
+            Get
+                Return CType(Me("RequestUrl"),String)
+            End Get
+            Set
+                Me("RequestUrl") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ApiKey() As String
+            Get
+                Return CType(Me("ApiKey"),String)
+            End Get
+            Set
+                Me("ApiKey") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ShowPlainText() As String
+            Get
+                Return CType(Me("ShowPlainText"),String)
+            End Get
+            Set
+                Me("ShowPlainText") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
         Public Property DebugMode() As Boolean
             Get
                 Return CType(Me("DebugMode"),Boolean)
@@ -90,85 +127,26 @@ Namespace My
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property LogModel() As Boolean
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property LogMode() As Boolean
             Get
-                Return CType(Me("LogModel"),Boolean)
+                Return CType(Me("LogMode"),Boolean)
             End Get
             Set
-                Me("LogModel") = value
+                Me("LogMode") = value
             End Set
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property ClientId() As String
+        Public Property SecretKey() As String
             Get
-                Return CType(Me("ClientId"),String)
+                Return CType(Me("SecretKey"),String)
             End Get
             Set
-                Me("ClientId") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property ClientSecret() As String
-            Get
-                Return CType(Me("ClientSecret"),String)
-            End Get
-            Set
-                Me("ClientSecret") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property OtherInfo() As String
-            Get
-                Return CType(Me("OtherInfo"),String)
-            End Get
-            Set
-                Me("OtherInfo") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property TempMode() As Boolean
-            Get
-                Return CType(Me("TempMode"),Boolean)
-            End Get
-            Set
-                Me("TempMode") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property License() As String
-            Get
-                Return CType(Me("License"),String)
-            End Get
-            Set
-                Me("License") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic")>  _
-        Public Property OCRRequestAddress() As String
-            Get
-                Return CType(Me("OCRRequestAddress"),String)
-            End Get
-            Set
-                Me("OCRRequestAddress") = value
+                Me("SecretKey") = value
             End Set
         End Property
         
@@ -193,30 +171,6 @@ Namespace My
             End Get
             Set
                 Me("ExpiryTime") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("C:\")>  _
-        Public Property ArchivePath() As String
-            Get
-                Return CType(Me("ArchivePath"),String)
-            End Get
-            Set
-                Me("ArchivePath") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("BiduOCR")>  _
-        Public Property OCRMode() As String
-            Get
-                Return CType(Me("OCRMode"),String)
-            End Get
-            Set
-                Me("OCRMode") = value
             End Set
         End Property
     End Class

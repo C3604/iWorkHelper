@@ -11,7 +11,7 @@ Public Class MainRibbon
     End Sub
 
     Private Sub ButtonSetting_Click(sender As Object, e As RibbonControlEventArgs) Handles ButtonSetting.Click
-        Dim settingForm As New FormSetting()
+        Dim settingForm As New Form_Settings()
         settingForm.ShowDialog()
     End Sub
 

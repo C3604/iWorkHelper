@@ -9,8 +9,8 @@ Imports Newtonsoft.Json
 ''' </summary>
 Public Module OCRProcessor
     ' OCR 服务相关配置
-    Private ReadOnly ClientId As String = My.Settings.ClientId
-    Private ReadOnly ClientSecret As String = My.Settings.ClientSecret
+    Private ReadOnly ClientId As String = My.Settings.ApiKey
+    Private ReadOnly ClientSecret As String = My.Settings.SecretKey
     Private ReadOnly OCRUrl As String = "https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic"
     Private ReadOnly TokenUrl As String = "https://aip.baidubce.com/oauth/2.0/token"
 

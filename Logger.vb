@@ -1,10 +1,12 @@
 ﻿Imports System.IO
+Imports System.Windows.Forms
 
 ''' <summary>
 ''' 日志模块，记录程序运行的事件、警告和错误信息。
 ''' </summary>
 Public Module Logger
-    Private ReadOnly LogFilePath As String = Path.Combine(Path.GetTempPath(), "OutlookPlugin.log")
+    Dim logFolderPath As String = Path.Combine(Path.GetTempPath(), "OutlookPlugin")
+    Dim logFilePath As String = Path.Combine(logFolderPath, "OutlookPlugin.log")
     Private Const MaxLogFileSize As Long = 1024 * 1024 ' 1 MB
     Private ReadOnly LogFileLock As New Object()
     Private ReadOnly EnableConsoleOutput As Boolean = True ' 从配置加载
@@ -25,6 +27,10 @@ Public Module Logger
     ''' </summary>
     Public Sub WriteLog(level As LogLevel, moduleName As String, message As String)
         Try
+            If Not My.Settings.LogMode Then
+                Exit Sub
+            End If
+
             SyncLock LogFileLock
                 ' 检查日志文件是否存在
                 EnsureLogFileExists()
@@ -36,7 +42,7 @@ Public Module Logger
                 Dim logEntry As String = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} [{level}] {moduleName} - {message}"
 
                 ' 写入日志文件
-                File.AppendAllText(LogFilePath, logEntry & Environment.NewLine)
+                File.AppendAllText(logFilePath, logEntry & Environment.NewLine)
 
                 ' 控制台输出（根据配置和日志级别）
                 If EnableConsoleOutput AndAlso level >= LogLevel.Warning Then
@@ -53,11 +59,21 @@ Public Module Logger
     ''' </summary>
     Private Sub EnsureLogFileExists()
         Try
-            If Not File.Exists(LogFilePath) Then
-                File.WriteAllText(LogFilePath, "日志文件已创建。" & Environment.NewLine)
+            ' 判断是否勾选 chkLog
+            If My.Settings.LogMode Then
+                ' 检查日志文件夹是否存在，如果不存在则创建文件夹
+                If Not Directory.Exists(logFolderPath) Then
+                    Directory.CreateDirectory(logFolderPath)
+                End If
+
+                ' 检查日志文件是否存在，如果不存在则创建日志文件
+                If Not File.Exists(logFilePath) Then
+                    File.WriteAllText(logFilePath, "日志文件已创建。" & Environment.NewLine)
+                End If
             End If
         Catch ex As Exception
-            Console.WriteLine($"创建日志文件失败: {ex.Message}")
+            ' 捕获异常并显示错误信息
+            MessageBox.Show("日志文件创建失败: " & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
