@@ -1,4 +1,4 @@
-﻿Partial Class MainRibbon
+﻿Partial Class iWorkHelperRibbon
     Inherits Microsoft.Office.Tools.Ribbon.RibbonBase
 
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -41,78 +41,69 @@
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TabMain = Me.Factory.CreateRibbonTab
-        Me.GroupInvoice = Me.Factory.CreateRibbonGroup
-        Me.ButtonArchive = Me.Factory.CreateRibbonButton
-        Me.ButtonSetting = Me.Factory.CreateRibbonButton
-        Me.ButtonHelp = Me.Factory.CreateRibbonButton
-        Me.TabMain.SuspendLayout()
-        Me.GroupInvoice.SuspendLayout()
+        Me.MainTab = Me.Factory.CreateRibbonTab
+        Me.Group_InvoiceHelper = Me.Factory.CreateRibbonGroup
+        Me.btn_Archive = Me.Factory.CreateRibbonButton
+        Me.btn_Settings = Me.Factory.CreateRibbonButton
+        Me.MainTab.SuspendLayout()
+        Me.Group_InvoiceHelper.SuspendLayout()
         Me.SuspendLayout()
         '
-        'TabMain
+        'MainTab
         '
-        Me.TabMain.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office
-        Me.TabMain.Groups.Add(Me.GroupInvoice)
-        Me.TabMain.Label = "工具"
-        Me.TabMain.Name = "TabMain"
+        Me.MainTab.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office
+        Me.MainTab.Groups.Add(Me.Group_InvoiceHelper)
+        Me.MainTab.Label = "工作助手"
+        Me.MainTab.Name = "MainTab"
         '
-        'GroupInvoice
+        'Group_InvoiceHelper
         '
-        Me.GroupInvoice.Items.Add(Me.ButtonArchive)
-        Me.GroupInvoice.Items.Add(Me.ButtonSetting)
-        Me.GroupInvoice.Items.Add(Me.ButtonHelp)
-        Me.GroupInvoice.Label = "发票工具"
-        Me.GroupInvoice.Name = "GroupInvoice"
+        Me.Group_InvoiceHelper.Items.Add(Me.btn_Archive)
+        Me.Group_InvoiceHelper.Items.Add(Me.btn_Settings)
+        Me.Group_InvoiceHelper.Label = "发票助手"
+        Me.Group_InvoiceHelper.Name = "Group_InvoiceHelper"
         '
-        'ButtonArchive
+        'btn_Archive
         '
-        Me.ButtonArchive.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.ButtonArchive.Image = Global.XYOutlookPlugin.My.Resources.Resources.Archive
-        Me.ButtonArchive.Label = "归档"
-        Me.ButtonArchive.Name = "ButtonArchive"
-        Me.ButtonArchive.ShowImage = True
+        Me.btn_Archive.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.btn_Archive.Image = Global.iWorkHelper.My.Resources.Resources.Archive
+        Me.btn_Archive.Label = "发票归档"
+        Me.btn_Archive.Name = "btn_Archive"
+        Me.btn_Archive.ShowImage = True
         '
-        'ButtonSetting
+        'btn_Settings
         '
-        Me.ButtonSetting.Image = Global.XYOutlookPlugin.My.Resources.Resources.Setting
-        Me.ButtonSetting.Label = "设置"
-        Me.ButtonSetting.Name = "ButtonSetting"
-        Me.ButtonSetting.ShowImage = True
+        Me.btn_Settings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.btn_Settings.Image = Global.iWorkHelper.My.Resources.Resources.Settings
+        Me.btn_Settings.Label = "设置"
+        Me.btn_Settings.Name = "btn_Settings"
+        Me.btn_Settings.ShowImage = True
         '
-        'ButtonHelp
+        'iWorkHelperRibbon
         '
-        Me.ButtonHelp.Image = Global.XYOutlookPlugin.My.Resources.Resources.Help
-        Me.ButtonHelp.Label = "帮助"
-        Me.ButtonHelp.Name = "ButtonHelp"
-        Me.ButtonHelp.ShowImage = True
-        '
-        'MainRibbon
-        '
-        Me.Name = "MainRibbon"
+        Me.Name = "iWorkHelperRibbon"
         Me.RibbonType = "Microsoft.Outlook.Explorer, Microsoft.Outlook.Mail.Read"
-        Me.Tabs.Add(Me.TabMain)
-        Me.TabMain.ResumeLayout(False)
-        Me.TabMain.PerformLayout()
-        Me.GroupInvoice.ResumeLayout(False)
-        Me.GroupInvoice.PerformLayout()
+        Me.Tabs.Add(Me.MainTab)
+        Me.MainTab.ResumeLayout(False)
+        Me.MainTab.PerformLayout()
+        Me.Group_InvoiceHelper.ResumeLayout(False)
+        Me.Group_InvoiceHelper.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents TabMain As Microsoft.Office.Tools.Ribbon.RibbonTab
-    Friend WithEvents GroupInvoice As Microsoft.Office.Tools.Ribbon.RibbonGroup
-    Friend WithEvents ButtonArchive As Microsoft.Office.Tools.Ribbon.RibbonButton
-    Friend WithEvents ButtonSetting As Microsoft.Office.Tools.Ribbon.RibbonButton
-    Friend WithEvents ButtonHelp As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents MainTab As Microsoft.Office.Tools.Ribbon.RibbonTab
+    Friend WithEvents Group_InvoiceHelper As Microsoft.Office.Tools.Ribbon.RibbonGroup
+    Friend WithEvents btn_Archive As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents btn_Settings As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection
 
     <System.Diagnostics.DebuggerNonUserCode()> _
-    Friend ReadOnly Property MainRibbon() As MainRibbon
+    Friend ReadOnly Property MainRibbon() As iWorkHelperRibbon
         Get
-            Return Me.GetRibbon(Of MainRibbon)()
+            Return Me.GetRibbon(Of iWorkHelperRibbon)()
         End Get
     End Property
 End Class

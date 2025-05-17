@@ -57,120 +57,36 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property archivePath() As String
+        Public Property ArchivePath() As String
             Get
-                Return CType(Me("archivePath"),String)
+                Return CType(Me("ArchivePath"),String)
             End Get
             Set
-                Me("archivePath") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property OCRMode() As String
-            Get
-                Return CType(Me("OCRMode"),String)
-            End Get
-            Set
-                Me("OCRMode") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property RequestUrl() As String
-            Get
-                Return CType(Me("RequestUrl"),String)
-            End Get
-            Set
-                Me("RequestUrl") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property ApiKey() As String
-            Get
-                Return CType(Me("ApiKey"),String)
-            End Get
-            Set
-                Me("ApiKey") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property ShowPlainText() As String
-            Get
-                Return CType(Me("ShowPlainText"),String)
-            End Get
-            Set
-                Me("ShowPlainText") = value
+                Me("ArchivePath") = value
             End Set
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property DebugMode() As Boolean
+        Public Property DebugStatus() As Boolean
             Get
-                Return CType(Me("DebugMode"),Boolean)
+                Return CType(Me("DebugStatus"),Boolean)
             End Get
             Set
-                Me("DebugMode") = value
+                Me("DebugStatus") = value
             End Set
         End Property
-        
+
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-        Public Property LogMode() As Boolean
+        Public Property MergeDidiFiles() As Boolean
             Get
-                Return CType(Me("LogMode"),Boolean)
+                Return CType(Me("MergeDidiFiles"),Boolean)
             End Get
             Set
-                Me("LogMode") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property SecretKey() As String
-            Get
-                Return CType(Me("SecretKey"),String)
-            End Get
-            Set
-                Me("SecretKey") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property AccessToken() As String
-            Get
-                Return CType(Me("AccessToken"),String)
-            End Get
-            Set
-                Me("AccessToken") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property ExpiryTime() As String
-            Get
-                Return CType(Me("ExpiryTime"),String)
-            End Get
-            Set
-                Me("ExpiryTime") = value
+                Me("MergeDidiFiles") = value
             End Set
         End Property
     End Class
@@ -184,9 +100,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.XYOutlookPlugin.My.MySettings
+        Friend ReadOnly Property Settings() As Global.iWorkHelper.My.MySettings
             Get
-                Return Global.XYOutlookPlugin.My.MySettings.Default
+                Return Global.iWorkHelper.My.MySettings.Default
             End Get
         End Property
     End Module

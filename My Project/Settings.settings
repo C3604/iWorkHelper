@@ -1,36 +1,15 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="archivePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="ArchivePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\rj4r74\OneDrive - Aptiv\00-WorkFiles\90-Development\iWorkHelper\Archive</Value>
     </Setting>
-    <Setting Name="OCRMode" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="RequestUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="ApiKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="ShowPlainText" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="DebugMode" Type="System.Boolean" Scope="User">
+    <Setting Name="DebugStatus" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="LogMode" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="SecretKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="AccessToken" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="ExpiryTime" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="MergeDidiFiles" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

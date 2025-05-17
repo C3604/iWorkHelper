@@ -21,10 +21,10 @@
     <ProjectTypeGuids>{BAA0C2D2-18E2-41B9-852F-F413020CAA33};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8D47EEFF-B00F-432F-9045-FE560776F9CC}</ProjectGuid>
+    <ProjectGuid>{A951CC0F-CA4B-4530-A664-6CD44BEE5627}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>XYOutlookPlugin</RootNamespace>
-    <AssemblyName>XYOutlookPlugin</AssemblyName>
+    <RootNamespace>iWorkHelper</RootNamespace>
+    <AssemblyName>iWorkHelper</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <DefineConstants>VSTO40,UseOfficeInterop</DefineConstants>
     <StartupObject>
@@ -32,19 +32,19 @@
     <ResolveComReferenceSilent>true</ResolveComReferenceSilent>
     <IsWebBootstrapper>False</IsWebBootstrapper>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>publish\iWorkHelper\</PublishUrl>
     <InstallUrl />
     <TargetCulture>zh-chs</TargetCulture>
-    <ApplicationVersion>0.1.0.4</ApplicationVersion>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateInterval>0</UpdateInterval>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
-    <ProductName>XYOutlookPlugin</ProductName>
+    <ProductName>iWorkHelper</ProductName>
     <PublisherName />
     <SupportUrl />
-    <FriendlyName>XYOutlookPlugin</FriendlyName>
-    <OfficeApplicationDescription>一款Outlook插件，可以用来对发票进行归档</OfficeApplicationDescription>
+    <FriendlyName>iWorkHelper</FriendlyName>
+    <OfficeApplicationDescription />
     <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
   <ItemGroup>
@@ -98,10 +98,11 @@
     <DebugSymbols>true</DebugSymbols>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>XYOutlookPlugin.xml</DocumentationFile>
+    <DocumentationFile>iWorkHelper.xml</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
   </PropertyGroup>
   <!--
     This section defines properties that are set when the "Release" configuration is selected.
@@ -127,98 +128,68 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>XYOutlookPlugin.xml</DocumentationFile>
+    <DocumentationFile>iWorkHelper.xml</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
   </PropertyGroup>
   <!--
     This section specifies references for the project.
   -->
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.9.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.IO.Pipelines, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.IO.Pipelines.9.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
-    </Reference>
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Net.Http.Json.9.0.0\lib\net462\System.Net.Http.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Text.Encodings.Web.9.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Text.Json.9.0.0\lib\net462\System.Text.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="UglyToad.PdfPig, Version=0.1.9.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>packages\PdfPig.0.1.9\lib\net471\UglyToad.PdfPig.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Core, Version=0.1.9.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>packages\PdfPig.0.1.9\lib\net471\UglyToad.PdfPig.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.DocumentLayoutAnalysis, Version=0.1.9.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>packages\PdfPig.0.1.9\lib\net471\UglyToad.PdfPig.DocumentLayoutAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Fonts, Version=0.1.9.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>packages\PdfPig.0.1.9\lib\net471\UglyToad.PdfPig.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Package, Version=0.1.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\PdfPig.0.1.9\lib\net471\UglyToad.PdfPig.Package.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Tokenization, Version=0.1.9.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>packages\PdfPig.0.1.9\lib\net471\UglyToad.PdfPig.Tokenization.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Tokens, Version=0.1.9.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>packages\PdfPig.0.1.9\lib\net471\UglyToad.PdfPig.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="iTextSharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\iTextSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -309,41 +280,47 @@
   -->
   <ItemGroup>
     <AppDesigner Include="My Project\" />
-    <Compile Include="app.Designer.vb" />
-    <Compile Include="Info\Form_Settings.Designer.vb">
-      <DependentUpon>Form_Settings.vb</DependentUpon>
+    <Compile Include="Logger\LogManager.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Info\Form_Settings.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Info\ShowHelpDocument.vb" />
-    <Compile Include="Invoicearchive\BiduOCR\MailProgressBarForm.Designer.vb">
-      <DependentUpon>MailProgressBarForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Invoicearchive\BiduOCR\MailProgressBarForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Invoicearchive\BiduOCR\MainInvoicearchive.vb" />
-    <Compile Include="Invoicearchive\BiduOCR\OCRProcessor.vb" />
-    <Compile Include="Logger.vb" />
+    <Compile Include="ProcessMail\FolderOpener.vb" />
+    <Compile Include="ProcessMail\GetMailID.vb" />
     <Compile Include="MainRibbon.Designer.vb">
       <DependentUpon>MainRibbon.vb</DependentUpon>
     </Compile>
     <Compile Include="MainRibbon.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
+    <Compile Include="ProcessMail\MailProcessor.vb" />
+    <Compile Include="ProcessMail\PdfpigOcr.vb" />
+    <Compile Include="ProcessMail\PdfPigProgressBarForm.Designer.vb">
+      <DependentUpon>PdfPigProgressBarForm.vb</DependentUpon>
     </Compile>
+    <Compile Include="ProcessMail\PdfPigProgressBarForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\SettingsForm.Designer.vb">
+      <DependentUpon>SettingsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\SettingsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\WriteSetting.vb" />
     <Compile Include="ThisAddIn.vb">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="ProcessMail\PdfPigProgressBarForm.resx">
+      <DependentUpon>PdfPigProgressBarForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\SettingsForm.resx">
+      <DependentUpon>SettingsForm.vb</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="iWorkHelper_TemporaryKey.pfx" />
     <None Include="packages.config" />
-    <None Include="README.MD" />
-    <None Include="Resources\OutlookPluginHelpDocument_V0_1.pdf" />
     <None Include="ThisAddIn.Designer.xml">
       <DependentUpon>ThisAddIn.vb</DependentUpon>
     </None>
@@ -351,12 +328,6 @@
       <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <EmbeddedResource Include="Info\Form_Settings.resx">
-      <DependentUpon>Form_Settings.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Invoicearchive\BiduOCR\MailProgressBarForm.resx">
-      <DependentUpon>MailProgressBarForm.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainRibbon.resx">
       <DependentUpon>MainRibbon.vb</DependentUpon>
     </EmbeddedResource>
@@ -377,40 +348,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Invoicearchive\Chineseocr_lite\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Archive.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Browser.png" />
+    <None Include="Resources\Settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cancel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Didi.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Help.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Info.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Invoice.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Save.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Setting.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Submit.png" />
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -429,10 +373,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>XYOutlookPlugin_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>iWorkHelper_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>06110998AB4A07F3A3EFDFAD5846F311A2F50B18</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>56BA88CF17B3B44E9022DE6EA1F0AE1A1E76DBA7</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a Visual Basic project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
@@ -449,4 +393,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <ItemGroup>
+    <PackageReference Include="BouncyCastle" Version="1.8.9" />
+  </ItemGroup>
 </Project>

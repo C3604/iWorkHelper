@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class MailProgressBarForm
+Partial Class PdfPigProgressBarForm
     Inherits System.Windows.Forms.Form
 
     'Form 重写 Dispose，以清理组件列表。
@@ -22,46 +22,42 @@ Partial Class MailProgressBarForm
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.LabelProgressBar = New System.Windows.Forms.Label()
         Me.MailProgressBar = New System.Windows.Forms.ProgressBar()
+        Me.LabelProgressBar = New System.Windows.Forms.Label()
         Me.SuspendLayout()
+        '
+        'MailProgressBar
+        '
+        Me.MailProgressBar.Location = New System.Drawing.Point(15, 16)
+        Me.MailProgressBar.Name = "MailProgressBar"
+        Me.MailProgressBar.Size = New System.Drawing.Size(550, 30)
+        Me.MailProgressBar.TabIndex = 0
         '
         'LabelProgressBar
         '
         Me.LabelProgressBar.AutoSize = True
-        Me.LabelProgressBar.Location = New System.Drawing.Point(12, 49)
+        Me.LabelProgressBar.Location = New System.Drawing.Point(12, 61)
         Me.LabelProgressBar.Name = "LabelProgressBar"
-        Me.LabelProgressBar.Size = New System.Drawing.Size(97, 15)
-        Me.LabelProgressBar.TabIndex = 0
-        Me.LabelProgressBar.Text = "正在处理……"
+        Me.LabelProgressBar.Size = New System.Drawing.Size(67, 15)
+        Me.LabelProgressBar.TabIndex = 1
+        Me.LabelProgressBar.Text = "处理进度"
         '
-        'MailProgressBar
-        '
-        Me.MailProgressBar.Location = New System.Drawing.Point(15, 15)
-        Me.MailProgressBar.Name = "MailProgressBar"
-        Me.MailProgressBar.Size = New System.Drawing.Size(555, 25)
-        Me.MailProgressBar.TabIndex = 1
-        '
-        'MailProgressBarForm
+        'PdfPigProgressBarForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(582, 73)
+        Me.ClientSize = New System.Drawing.Size(582, 90)
         Me.ControlBox = False
-        Me.Controls.Add(Me.MailProgressBar)
         Me.Controls.Add(Me.LabelProgressBar)
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
-        Me.Name = "MailProgressBarForm"
-        Me.ShowIcon = False
-        Me.ShowInTaskbar = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "正在处理……"
+        Me.Controls.Add(Me.MailProgressBar)
+        Me.Name = "PdfPigProgressBarForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.Text = "进度"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents LabelProgressBar As Windows.Forms.Label
     Friend WithEvents MailProgressBar As Windows.Forms.ProgressBar
+    Friend WithEvents LabelProgressBar As Windows.Forms.Label
 End Class
