@@ -83,7 +83,7 @@ Public Class FolderOpener
             ' 启动资源管理器打开文件夹
             Process.Start("explorer", folderPath)
             LogManager.WriteLog(LogLevel.INFO, "FolderOpener.OpenFolder", "文件夹已成功打开：" & folderPath)
-        Catch ex As Exception
+        Catch ex As system.Exception
             LogManager.WriteLog(LogLevel.Error, "FolderOpener.OpenFolder", "无法打开文件夹：" & folderPath & " 错误：" & ex.Message)
             Throw New InvalidOperationException("无法打开文件夹！", ex)
         End Try
@@ -104,7 +104,7 @@ Public Class FolderOpener
                 LogManager.WriteLog(LogLevel.Error, "FolderOpener.ActivateFolder", "未找到文件夹窗口，激活失败：" & folderPath)
                 Throw New InvalidOperationException("无法找到已打开的文件夹窗口！")
             End If
-        Catch ex As Exception
+        Catch ex As system.Exception
             LogManager.WriteLog(LogLevel.Error, "FolderOpener.ActivateFolder", "激活文件夹失败：" & folderPath & " 错误：" & ex.Message)
             Throw New InvalidOperationException("激活文件夹失败！", ex)
         End Try

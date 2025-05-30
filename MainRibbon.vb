@@ -58,7 +58,7 @@ Public Class iWorkHelperRibbon
 
             ' 处理完成后打开归档文件夹
             Dim folderOpener As New FolderOpener(My.Settings.ArchivePath)
-        Catch ex As Exception
+        Catch ex As system.Exception
             ' 捕获异常并记录错误信息
             If My.Settings.DebugStatus Then
                 System.Threading.Tasks.Task.Run(Sub()

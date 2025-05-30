@@ -46,7 +46,7 @@ Public Class LogManager
                         End If
                         
                         isInitialized = True
-                    Catch ex As Exception
+                    Catch ex As system.Exception
                         ' 初始化失败时禁用文件操作
                         disableFileOperations = True
                         Console.WriteLine("日志系统初始化失败: " & ex.Message)
@@ -90,7 +90,7 @@ Public Class LogManager
                     Next
                 End Using
             End If
-        Catch ex As Exception
+        Catch ex As system.Exception
             ' 如果写日志过程中发生错误，禁用文件操作以避免频繁出错
             disableFileOperations = True
             Console.WriteLine("写入日志失败，已禁用文件操作: " & ex.Message)
@@ -124,7 +124,7 @@ Public Class LogManager
                 ' 执行日志滚动
                 RollOverLogFile()
             End If
-        Catch ex As Exception
+        Catch ex As system.Exception
             disableFileOperations = True
             Console.WriteLine("检查日志文件大小失败: " & ex.Message)
         End Try
@@ -155,12 +155,12 @@ Public Class LogManager
                     End Using
                     ' 删除原始日志文件（压缩后的文件已保存为 .gz）
                     File.Delete(archiveLogPath)
-                Catch ex As Exception
+                Catch ex As system.Exception
                     ' 压缩失败不影响主要功能
                     Console.WriteLine("日志压缩失败: " & ex.Message)
                 End Try
             End Sub)
-        Catch ex As Exception
+        Catch ex As system.Exception
             disableFileOperations = True
             Console.WriteLine("日志滚动失败: " & ex.Message)
         End Try

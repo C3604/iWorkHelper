@@ -35,17 +35,17 @@
     <PublishUrl>publish\iWorkHelper\</PublishUrl>
     <InstallUrl />
     <TargetCulture>zh-chs</TargetCulture>
-    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <ApplicationVersion>1.0.0.2</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
     <ProductName>iWorkHelper</ProductName>
-    <PublisherName />
+    <PublisherName>Yang</PublisherName>
     <SupportUrl />
     <FriendlyName>iWorkHelper</FriendlyName>
-    <OfficeApplicationDescription />
-    <LoadBehavior>3</LoadBehavior>
+    <OfficeApplicationDescription>iWorkHelper 是一个基于 VSTO（Visual Studio Tools for Office）和 VB.NET 的 Outlook 插件，旨在自动化处理邮件附件中的 PDF 文件，特别是针对滴滴出行相关的发票和行程单。该插件集成了 OCR 文本识别功能，可以智能提取文档信息，并实现自动化的文件重命名和归档管理。</OfficeApplicationDescription>
+    <LoadBehavior>16</LoadBehavior>
   </PropertyGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -60,7 +60,7 @@
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 和 x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
@@ -302,6 +302,7 @@
     <Compile Include="ProcessMail\PdfPigProgressBarForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Setting\Checkupdata.vb" />
     <Compile Include="Setting\SettingsForm.Designer.vb">
       <DependentUpon>SettingsForm.vb</DependentUpon>
     </Compile>
@@ -395,5 +396,8 @@
   </ProjectExtensions>
   <ItemGroup>
     <PackageReference Include="BouncyCastle" Version="1.8.9" />
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.3</Version>
+    </PackageReference>
   </ItemGroup>
 </Project>

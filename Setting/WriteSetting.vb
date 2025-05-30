@@ -59,7 +59,7 @@ Public Class WriteSetting
             LogManager.WriteLog(LogLevel.INFO, "SettingsManager.SaveSetting", $"设置项 {settingName} 已成功保存。")
             Return 1
 
-        Catch ex As Exception
+        Catch ex As system.Exception
             ' 捕捉任何异常，返回失败并打印错误信息
             LogManager.WriteLog(LogLevel.Error, "SettingsManager.SaveSetting", $"保存设置时发生错误: {ex.Message}")
             MessageBox.Show("错误信息: " & ex.Message, "保存设置失败", MessageBoxButtons.OK, MessageBoxIcon.Error)

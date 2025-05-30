@@ -34,7 +34,7 @@ Public Class ThisAddIn
                     LogManager.WriteLog(LogLevel.INFO, "ThisAddIn.EnsureInitialized", "插件初始化完成")
                 End Sub)
             End If
-        Catch ex As Exception
+        Catch ex As system.Exception
             If My.Settings.DebugStatus Then
                 Task.Run(Sub()
                     LogManager.WriteLog(LogLevel.Error, "ThisAddIn.EnsureInitialized", $"插件初始化失败: {ex.Message}")
@@ -60,7 +60,7 @@ Public Class ThisAddIn
                 
                 ' 清理日志系统资源
                 LogManager.Cleanup()
-            Catch ex As Exception
+            Catch ex As system.Exception
                 ' 忽略关闭时的错误
             End Try
         End Sub)

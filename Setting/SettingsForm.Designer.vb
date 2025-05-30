@@ -31,6 +31,7 @@ Partial Class SettingsForm
         Me.Lab_PathError = New System.Windows.Forms.Label()
         Me.ckb_MergeDidiFiles = New System.Windows.Forms.CheckBox()
         Me.lblVersion = New System.Windows.Forms.Label()
+        Me.lbl_Checkversion = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -74,7 +75,7 @@ Partial Class SettingsForm
         '
         'btn_SaveSettings
         '
-        Me.btn_SaveSettings.Location = New System.Drawing.Point(101, 111)
+        Me.btn_SaveSettings.Location = New System.Drawing.Point(104, 126)
         Me.btn_SaveSettings.Margin = New System.Windows.Forms.Padding(2)
         Me.btn_SaveSettings.Name = "btn_SaveSettings"
         Me.btn_SaveSettings.Size = New System.Drawing.Size(158, 37)
@@ -114,20 +115,32 @@ Partial Class SettingsForm
         'lblVersion
         '
         Me.lblVersion.AutoSize = True
-        Me.lblVersion.Location = New System.Drawing.Point(284, 123)
+        Me.lblVersion.Location = New System.Drawing.Point(297, 146)
         Me.lblVersion.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblVersion.Name = "lblVersion"
-        Me.lblVersion.Size = New System.Drawing.Size(101, 12)
+        Me.lblVersion.Size = New System.Drawing.Size(53, 12)
         Me.lblVersion.TabIndex = 7
-        Me.lblVersion.Text = "未获取到版本信息"
+        Me.lblVersion.Text = "当前版本"
+        '
+        'lbl_Checkversion
+        '
+        Me.lbl_Checkversion.AutoSize = True
+        Me.lbl_Checkversion.ForeColor = System.Drawing.Color.Red
+        Me.lbl_Checkversion.Location = New System.Drawing.Point(297, 126)
+        Me.lbl_Checkversion.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lbl_Checkversion.Name = "lbl_Checkversion"
+        Me.lbl_Checkversion.Size = New System.Drawing.Size(53, 12)
+        Me.lbl_Checkversion.TabIndex = 7
+        Me.lbl_Checkversion.Text = "最新版本"
         '
         'SettingsForm
         '
         Me.AcceptButton = Me.btn_SaveSettings
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(409, 153)
+        Me.ClientSize = New System.Drawing.Size(409, 172)
         Me.Controls.Add(Me.ckb_MergeDidiFiles)
+        Me.Controls.Add(Me.lbl_Checkversion)
         Me.Controls.Add(Me.lblVersion)
         Me.Controls.Add(Me.Lab_PathError)
         Me.Controls.Add(Me.btn_SaveSettings)
@@ -159,4 +172,5 @@ Partial Class SettingsForm
     Friend WithEvents Lab_PathError As Windows.Forms.Label
     Friend WithEvents ckb_MergeDidiFiles As Windows.Forms.CheckBox
     Friend WithEvents lblVersion As Windows.Forms.Label
+    Friend WithEvents lbl_Checkversion As Windows.Forms.Label
 End Class
