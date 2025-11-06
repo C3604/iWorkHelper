@@ -1,15 +1,7 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="ArchivePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\rj4r74\OneDrive - Aptiv\00-WorkFiles\90-Development\iWorkHelper\Archive</Value>
-    </Setting>
-    <Setting Name="DebugStatus" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="MergeDidiFiles" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-  </Settings>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" UseMySettingsClassName="true">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
 </SettingsFile>

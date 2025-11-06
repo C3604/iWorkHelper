@@ -10,10 +10,10 @@ Imports System.Security
 '查看程序集特性的值
 
 <Assembly: AssemblyTitle("iWorkHelper")> 
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("iWorkHelper")>
-<Assembly: AssemblyCopyright("Copyright © 2025")>
+<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyCompany("Aptiv")> 
+<Assembly: AssemblyProduct("iWorkHelper")> 
+<Assembly: AssemblyCopyright("Copyright © Aptiv 2025")> 
 <Assembly: AssemblyTrademark("")> 
 
 '将 ComVisible 设置为 false 将使此程序集中的类型
@@ -22,7 +22,7 @@ Imports System.Security
 <Assembly: ComVisible(False)>
 
 '如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-<Assembly: Guid("15959778-ee80-4ea3-bb74-3cd44b5358a3")> 
+<Assembly: Guid("17c64807-e19f-460c-ae57-8427a6cf1b56")> 
 
 ' 程序集的版本信息由下列四个值组成:
 '
@@ -35,8 +35,8 @@ Imports System.Security
 ' 方法是按如下所示使用“*”: :
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("1.0.0.0")> 
 
 Friend Module DesignTimeConstants
     Public Const RibbonTypeSerializer As String = "Microsoft.VisualStudio.Tools.Office.Ribbon.Serialization.RibbonTypeCodeDomSerializer, Microsoft.VisualStudio.Tools.Office.Designer, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"

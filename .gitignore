@@ -1,95 +1,71 @@
-# Visual Studio临时文件
-.vs/
+# Visual Studio / .NET 项目常见忽略
+
+# 用户特定设置文件
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
-.vscode/
+*.rsuser
 
-# 构建结果
+# VS 工程生成的缓存与索引
+.vs/
+[Ll]og/
+
+# trae配置文件
+.trae/
+
+# 构建产物（Debug/Release、二进制输出等）
 [Bb]in/
 [Oo]bj/
 [Dd]ebug/
+[Dd]ebugPublic/
 [Rr]elease/
-x64/
+[Rr]elease-*/
 x86/
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
-bld/
-[Bb]uild/
-msbuild.log
-msbuild.err
-msbuild.wrn
+x64/
 
-# Visual Studio 2015/2017/2019/2022 缓存/选项目录
-.vs/
+# 测试输出与覆盖率
+[Tt]est[Rr]esult*/
+TestResult.xml
+*.trx
+*.coverage
+*.coveragexml
 
-# VSTO相关
-*.vsto
-*.vsto.manifest
-*.vsto.sig
-*.dll.manifest
-*.dll.sig
-
-# NuGet包
-packages/
+# NuGet（使用 packages 管理时）
+packages/**
+**/packages/**
+!**/packages/build/
+!**/packages/repositories.config
 *.nupkg
-# NuGet Symbol包
 *.snupkg
-# 包管理器文件夹
-.paket/paket.exe
-paket-files/
+.nuget/
 
-# ReSharper
+# 发布与签名（VSTO/ClickOnce 常见）
+publish/
+*.pfx
+*.cer
+*.application
+*.manifest
+*.vsto
+*.deploy
+*.publishsettings
+*.pubxml.user
+
+# ReSharper / Rider 等工具
 _ReSharper*/
 *.[Rr]e[Ss]harper
 *.DotSettings.user
 
-# TeamCity
-_TeamCity*
-
-# DotCover
-*.dotCover
-
-# 测试结果
-[Tt]est[Rr]esult*/
-[Bb]uild[Ll]og.*
-
-# Publish目录
-**/[Pp]ublish/
-
-# 临时文件
+# 备份/临时文件
+*.bak
 *.tmp
 *.temp
-*.cache
-*.bak
+~$*
 
-# 日志文件
-*.log
-logs/
-
-# Windows专用
+# Windows 系统文件
 Thumbs.db
 ehthumbs.db
 Desktop.ini
-$RECYCLE.BIN/
-*.cab
-*.msi
-*.msm
-*.msp
-*.lnk
 
-# Office临时文件
-~$*
-
-# 用户特定文件
-*.pfx
-*.publishsettings
-*.pubxml
-
-# Cursor文件夹
-.cursor/
-**/.cursor/
-
-# 项目特定忽略
-# 添加其他特定于iWorkHelper的忽略规则（如有需要） 
+# 可选：VSCode 工作区（如不需要共享）
+.vscode/
