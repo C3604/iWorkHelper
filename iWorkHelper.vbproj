@@ -115,6 +115,7 @@
   <ItemGroup>
     <Reference Include="Accessibility" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -218,9 +219,23 @@
     <Compile Include="MainRibbon.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="LogManager\LogLevel.vb" />
+    <Compile Include="LogManager\ILogNotifier.vb" />
+    <Compile Include="LogManager\MessageBoxNotifier.vb" />
+    <Compile Include="LogManager\Logger.vb" />
+    <Compile Include="SettingsManager\SettingsWriter.vb" />
+    <Compile Include="SettingsManager\SettingForm.Designer.vb">
+      <DependentUpon>SettingForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsManager\SettingForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ThisAddIn.vb">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="SettingsManager\SettingForm.resx">
+      <DependentUpon>SettingForm.vb</DependentUpon>
+    </EmbeddedResource>
     <None Include="ThisAddIn.Designer.xml">
       <DependentUpon>ThisAddIn.vb</DependentUpon>
     </None>
@@ -254,6 +269,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <None Include="Resources\refresh_23.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\accept.png" />
+    <None Include="Resources\archive.png" />
+    <None Include="Resources\setting.png" />
+    <None Include="Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

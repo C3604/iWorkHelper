@@ -66,6 +66,57 @@ iWorkHelper 是一个基于 VSTO（Visual Studio Tools for Office）和 VB.NET �
 
 iWorkHelper 使用 `My.Settings` 存储配置信息，主要包括：
 
+### SettingsWriter 使用
+
+- 新增/更新配置项（仅支持 `Boolean` 与 `String`）：
+
+  ```vb
+  ' 将字符串类型配置写入（存在则更新，不存在则创建）
+  Dim r1 = SettingsWriter.WriteSetting("ArchivePath", "String", "C:\\Archive")
+  ' 将布尔类型配置写入
+  Dim r2 = SettingsWriter.WriteSetting("EnableFeatureX", "Boolean", True)
+
+  ' 返回值：Tuple(Of Boolean, String)
+  ' r1.Item1=True 表示成功；失败时 r1.Item2 为错误原因
+  ```
+
+- 错误示例：
+  - 类型不匹配：`SettingsWriter.WriteSetting("X", "Boolean", "True")`
+  - 类型无效：`SettingsWriter.WriteSetting("X", "Integer", 1)`
+  - 变量名无效（空/不合法标识符）：`SettingsWriter.WriteSetting("", "String", "v")`
+
+### 日志系统使用（LogManager）
+
+- 日志路径：`{tmppath}\log\iWorkhelper.log`，其中 `{tmppath}` 来源于 `My.Settings.tmppath`（未配置时回退到系统临时目录）。
+- 统一 UTF-8 编码保存；单个日志超过 10MB 自动分割。
+- 日志级别：`Info/Warn/Error`；`Warn` 与 `Error` 会同步弹窗（分别为黄色警告与红色错误）。
+
+示例：
+
+```vb
+Imports LogManager
+
+' 在加载时初始化
+Dim logger As New Logger() ' 使用 My.Settings.tmppath
+logger.Start()
+
+' 记录常规信息
+logger.LogInfo("启动成功")
+
+' 记录警告（同步弹窗）
+logger.LogWarn("网络波动，请稍后重试")
+
+' 记录错误（同步弹窗）
+logger.LogError("数据库连接失败")
+
+' 退出时停止
+logger.Stop()
+```
+
+注意：
+- 为保证一致性，其他模块不应直接调用 `MessageBox.Show`；应统一通过 `Logger.LogWarn/LogError` 触发弹窗与日志。
+- 写入操作在后台线程批量进行，避免阻塞主线程；必要时可调整构造参数中的刷新间隔与批量大小。
+
 
 ## 开发说明
 
@@ -88,4 +139,4 @@ iWorkHelper 使用 `My.Settings` 存储配置信息，主要包括：
 
 ---
 
-© 2025 iWorkHelper 
+© 2025 iWorkHelper

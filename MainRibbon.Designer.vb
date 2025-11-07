@@ -62,20 +62,23 @@
         Me.Group1.Items.Add(Me.btn_setting)
         Me.Group1.Label = "发票整理"
         Me.Group1.Name = "Group1"
-        Me.Group1.Visible = False
         '
         'btn_archive
         '
         Me.btn_archive.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.btn_archive.Image = Global.iWorkHelper.My.Resources.Resources.archive
         Me.btn_archive.Label = "归档"
         Me.btn_archive.Name = "btn_archive"
+        Me.btn_archive.ScreenTip = "开始进行发票识别并归档"
         Me.btn_archive.ShowImage = True
         '
         'btn_setting
         '
         Me.btn_setting.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.btn_setting.Image = Global.iWorkHelper.My.Resources.Resources.setting
         Me.btn_setting.Label = "设置"
         Me.btn_setting.Name = "btn_setting"
+        Me.btn_setting.ScreenTip = "设置发票识别"
         Me.btn_setting.ShowImage = True
         '
         'MainRibbon
