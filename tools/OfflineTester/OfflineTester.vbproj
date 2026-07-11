@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <!--
+    离线测试控制台工程。
+    目的：在不依赖 Outlook 的情况下，验证 PDF 文本抽取、本地字段解析、（可选）百度 OCR、
+          字段映射与命名规则。仅链接“离线安全”的 Core 源文件（不含 Outlook/My.Settings 相关）。
+    不属于 VSTO 主工程；不加入主解决方案，独立用 MSBuild 构建即可。
+  -->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7C2A5E1B-9F44-4B2E-8E3A-0F1234567890}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>iWorkhelper</RootNamespace>
+    <AssemblyName>OfflineTester</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <StartupObject>iWorkhelper.OfflineTesterProgram</StartupObject>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="Microsoft.Bcl.HashCode, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Bcl.HashCode.6.0.0\lib\net462\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Memory.4.6.0\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Numerics.Vectors.4.6.0\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig, Version=0.1.14.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PdfPig.0.1.14\lib\net471\UglyToad.PdfPig.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Core, Version=0.1.14.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PdfPig.0.1.14\lib\net471\UglyToad.PdfPig.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.DocumentLayoutAnalysis, Version=0.1.14.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PdfPig.0.1.14\lib\net471\UglyToad.PdfPig.DocumentLayoutAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Fonts, Version=0.1.14.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PdfPig.0.1.14\lib\net471\UglyToad.PdfPig.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Tokenization, Version=0.1.14.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PdfPig.0.1.14\lib\net471\UglyToad.PdfPig.Tokenization.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Tokens, Version=0.1.14.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PdfPig.0.1.14\lib\net471\UglyToad.PdfPig.Tokens.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="System" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Text" />
+    <Import Include="Microsoft.VisualBasic" />
+  </ItemGroup>
+  <!-- 链接“离线安全”的 Core 源文件（不含 Outlook / My.Settings 相关文件） -->
+  <ItemGroup>
+    <Compile Include="..\..\Core\Common\Result.vb">
+      <Link>Core\Common\Result.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Common\PathHelper.vb">
+      <Link>Core\Common\PathHelper.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Common\FileNameSanitizer.vb">
+      <Link>Core\Common\FileNameSanitizer.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Common\ExceptionFormatter.vb">
+      <Link>Core\Common\ExceptionFormatter.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Common\ErrorSeverity.vb">
+      <Link>Core\Common\ErrorSeverity.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Common\AppErrorCode.vb">
+      <Link>Core\Common\AppErrorCode.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Common\AppError.vb">
+      <Link>Core\Common\AppError.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Common\UserFriendlyMessageProvider.vb">
+      <Link>Core\Common\UserFriendlyMessageProvider.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Common\BuildFeatures.vb">
+      <Link>Core\Common\BuildFeatures.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Workflow\ArchiveProgressInfo.vb">
+      <Link>Core\Workflow\ArchiveProgressInfo.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Workflow\ArchivePreflightIssue.vb">
+      <Link>Core\Workflow\ArchivePreflightIssue.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Workflow\ArchivePreflightResult.vb">
+      <Link>Core\Workflow\ArchivePreflightResult.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Workflow\ArchivePreflightChecker.vb">
+      <Link>Core\Workflow\ArchivePreflightChecker.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Workflow\ArchiveRunGuard.vb">
+      <Link>Core\Workflow\ArchiveRunGuard.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Workflow\ArchiveRunToken.vb">
+      <Link>Core\Workflow\ArchiveRunToken.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Archive\ArchiveReportWriter.vb">
+      <Link>Core\Archive\ArchiveReportWriter.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Security\SecretProtector.vb">
+      <Link>Core\Security\SecretProtector.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Logging\AppLogger.vb">
+      <Link>Core\Logging\AppLogger.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Configuration\BaiduOcrOptions.vb">
+      <Link>Core\Configuration\BaiduOcrOptions.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Configuration\BaiduXmlConfigStore.vb">
+      <Link>Core\Configuration\BaiduXmlConfigStore.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Invoice\InvoiceFieldNames.vb">
+      <Link>Core\Invoice\InvoiceFieldNames.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Invoice\InvoiceTripInfo.vb">
+      <Link>Core\Invoice\InvoiceTripInfo.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Invoice\InvoiceLineItem.vb">
+      <Link>Core\Invoice\InvoiceLineItem.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Invoice\InvoiceInfo.vb">
+      <Link>Core\Invoice\InvoiceInfo.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Pdf\PdfTextExtractResult.vb">
+      <Link>Core\Pdf\PdfTextExtractResult.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Pdf\PdfTextLine.vb">
+      <Link>Core\Pdf\PdfTextLine.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Pdf\PdfTextBlock.vb">
+      <Link>Core\Pdf\PdfTextBlock.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Pdf\PdfTextLayoutExtractor.vb">
+      <Link>Core\Pdf\PdfTextLayoutExtractor.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Pdf\PdfTableRegionDetector.vb">
+      <Link>Core\Pdf\PdfTableRegionDetector.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Pdf\PdfTextExtractor.vb">
+      <Link>Core\Pdf\PdfTextExtractor.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Pdf\PdfMergeService.vb">
+      <Link>Core\Pdf\PdfMergeService.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\InvoiceDocumentType.vb">
+      <Link>Core\Recognition\InvoiceDocumentType.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\InvoiceField.vb">
+      <Link>Core\Recognition\InvoiceField.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\InvoiceRecognitionResult.vb">
+      <Link>Core\Recognition\InvoiceRecognitionResult.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\RecognitionContext.vb">
+      <Link>Core\Recognition\RecognitionContext.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\IInvoiceRecognizer.vb">
+      <Link>Core\Recognition\IInvoiceRecognizer.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\KeyFieldEvaluator.vb">
+      <Link>Core\Recognition\KeyFieldEvaluator.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\LocalTextNormalizer.vb">
+      <Link>Core\Recognition\LocalTextNormalizer.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\LocalTextInvoiceRecognizer.vb">
+      <Link>Core\Recognition\LocalTextInvoiceRecognizer.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\BaiduOcrInvoiceRecognizer.vb">
+      <Link>Core\Recognition\BaiduOcrInvoiceRecognizer.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\RecognitionPipeline.vb">
+      <Link>Core\Recognition\RecognitionPipeline.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\GeneralInvoiceFieldCandidate.vb">
+      <Link>Core\Recognition\GeneralInvoiceFieldCandidate.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\GeneralInvoiceParseResult.vb">
+      <Link>Core\Recognition\GeneralInvoiceParseResult.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\GeneralInvoiceCandidateScorer.vb">
+      <Link>Core\Recognition\GeneralInvoiceCandidateScorer.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\GeneralInvoiceLineItemParser.vb">
+      <Link>Core\Recognition\GeneralInvoiceLineItemParser.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\GeneralInvoiceLocalRecognizer.vb">
+      <Link>Core\Recognition\GeneralInvoiceLocalRecognizer.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Recognition\InvoiceRecognitionMerger.vb">
+      <Link>Core\Recognition\InvoiceRecognitionMerger.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Ocr\Baidu\BaiduAccessTokenResult.vb">
+      <Link>Core\Ocr\Baidu\BaiduAccessTokenResult.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Ocr\Baidu\BaiduAccessTokenProvider.vb">
+      <Link>Core\Ocr\Baidu\BaiduAccessTokenProvider.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Ocr\Baidu\BaiduOcrRawResponse.vb">
+      <Link>Core\Ocr\Baidu\BaiduOcrRawResponse.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Ocr\Baidu\BaiduOcrHttpClient.vb">
+      <Link>Core\Ocr\Baidu\BaiduOcrHttpClient.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Ocr\Baidu\BaiduInvoiceTypeMapper.vb">
+      <Link>Core\Ocr\Baidu\BaiduInvoiceTypeMapper.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Ocr\Baidu\BaiduMultipleInvoiceResponseParser.vb">
+      <Link>Core\Ocr\Baidu\BaiduMultipleInvoiceResponseParser.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Ocr\Baidu\BaiduInvoiceFieldMapper.vb">
+      <Link>Core\Ocr\Baidu\BaiduInvoiceFieldMapper.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Archive\ArchiveNamingRule.vb">
+      <Link>Core\Archive\ArchiveNamingRule.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Archive\UnknownPdfNamingRule.vb">
+      <Link>Core\Archive\UnknownPdfNamingRule.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Workflow\MailProcessingType.vb">
+      <Link>Core\Workflow\MailProcessingType.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Workflow\MailProcessingClassifier.vb">
+      <Link>Core\Workflow\MailProcessingClassifier.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Archive\NamingTemplates.vb">
+      <Link>Core\Archive\NamingTemplates.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Archive\NamingTemplateEngine.vb">
+      <Link>Core\Archive\NamingTemplateEngine.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Archive\ArchiveResult.vb">
+      <Link>Core\Archive\ArchiveResult.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Archive\ArchivePlanner.vb">
+      <Link>Core\Archive\ArchivePlanner.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Archive\ArchiveExecutor.vb">
+      <Link>Core\Archive\ArchiveExecutor.vb</Link>
+    </Compile>
+    <Compile Include="Program.vb" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

@@ -1,0 +1,110 @@
+# Visual Studio / VSTO 本地状态
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+*.cache
+*.vsidx
+
+# 构建与发布输出
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Rr]elease-[Ii]ntranet/
+[Rr]elease-[Ii]nternet/
+x86/
+x64/
+publish/
+app.publish/
+*.publish
+*.deploy
+*.application
+*.manifest
+*.vsto
+tools/OfflineTester/bin/
+tools/OfflineTester/obj/
+
+# 旧式 packages.config 依赖目录（已验证可通过 MSBuild Restore 恢复）
+packages/
+
+# 测试结果与诊断输出
+TestResults/
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+report/
+local-debug/
+local-debug-*/
+local-debug-output/
+*.localdebug.txt
+archive-report-*.txt
+
+# 日志、临时文件、转储
+logs/
+log/
+temp/
+tmp/
+*.log
+*.tmp
+*.temp
+*.bak
+*.old
+*.dmp
+
+# OCR / PDF 本地临时产物与脱敏输出
+ocr-raw/
+ocr-response/
+ocr-responses/
+*.ocr.json
+*.ocr.desensitized.json
+tools/OfflineTester/output/
+
+# 本地样例与期望文件（可能含真实票据或隐私信息）
+sample/**/*.pdf
+sample/**/*.json
+sample/**/*.csv
+sample/**/*.txt
+sample/**/*.xml
+sample/**/*.jpg
+sample/**/*.jpeg
+sample/**/*.png
+samples/
+sample-pdfs/
+
+# 本机配置与密钥材料
+user.config
+*.user.config
+*.local.config
+baidu-ocr.config.xml
+baidu-ocr.config.*.xml
+.env
+.env.*
+!.env.example
+secrets.json
+*.secrets.json
+*.pfx
+*.p12
+*.pem
+*.key
+*.snk
+*.pvk
+*.spc
+*.jks
+*.keystore
+*.cer
+*.crt
+
+# 邮件导出与本地数据文件
+*.msg
+*.eml
+*.pst
+*.ost
+
+# 其他系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
