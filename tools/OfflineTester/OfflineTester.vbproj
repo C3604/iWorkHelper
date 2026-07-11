@@ -108,6 +108,12 @@
     <Compile Include="..\..\Core\Common\BuildFeatures.vb">
       <Link>Core\Common\BuildFeatures.vb</Link>
     </Compile>
+    <Compile Include="..\..\Core\Common\PrivacySafeFormatter.vb">
+      <Link>Core\Common\PrivacySafeFormatter.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Common\ExplorerFolderService.vb">
+      <Link>Core\Common\ExplorerFolderService.vb</Link>
+    </Compile>
     <Compile Include="..\..\Core\Workflow\ArchiveProgressInfo.vb">
       <Link>Core\Workflow\ArchiveProgressInfo.vb</Link>
     </Compile>

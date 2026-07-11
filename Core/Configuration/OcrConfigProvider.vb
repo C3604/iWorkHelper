@@ -38,8 +38,28 @@ Public Module OcrConfigProvider
             End Try
         End If
 
+        ' —— 统一收口（单一控制入口）——
+        ' 在线 OCR 是否可调用，仅由「编译期是否允许在线解析（BuildFeatures.OnlineParserEnabled）」
+        ' 与「当前 ParseMode 是否为在线解析」共同决定；不再依赖已废弃的 OcrEnabled 复选框。
+        ' 内网版（未定义 INTERNET_BUILD）恒为 False，从而在编译期层面禁止在线 OCR。
+        options.Enabled = IsOnlineParseAllowed()
+
         AppLogger.Info("OCR 配置已加载：" & options.ToSafeSummary())
         Return options
+    End Function
+
+    ''' <summary>
+    ''' 当前是否允许调用在线 OCR = 编译期允许在线解析 且 ParseMode 为在线解析。
+    ''' 内网版本恒为 False。读取 My.Settings 失败按“本地”处理。
+    ''' </summary>
+    Public Function IsOnlineParseAllowed() As Boolean
+        If Not BuildFeatures.OnlineParserEnabled Then Return False
+        Dim mode As String = Nothing
+        Try
+            mode = My.Settings.ParseMode
+        Catch
+        End Try
+        Return String.Equals(If(mode, "Local").Trim(), "Online", StringComparison.OrdinalIgnoreCase)
     End Function
 
     ''' <summary>
@@ -48,7 +68,8 @@ Public Module OcrConfigProvider
     Private Function LoadFromSettings() As BaiduOcrOptions
         Dim s = My.Settings
         Dim o As New BaiduOcrOptions()
-        o.Enabled = s.OcrEnabled
+        ' 注意：o.Enabled 不再取自旧的 OcrEnabled 复选框字段；
+        ' 其最终值在 LoadBaiduOptions 中由 IsOnlineParseAllowed() 统一收口决定。
         o.ApiKey = If(s.BaiduApiKey, String.Empty).Trim()
         ' Secret Key 经 DPAPI 加密存储，此处解密使用（解密失败返回空，不阻断）。
         o.SecretKey = If(ProtectedSettingsProvider.GetSecretKey(), String.Empty).Trim()

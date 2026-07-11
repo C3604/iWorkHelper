@@ -42,8 +42,8 @@ Public Class SettingsForm
             End If
 
             ' 载入 OCR 配置：使用“有效配置”（My.Settings 优先，未填时取本机加密配置文件）。
+            ' 注：是否启用在线 OCR 已由“本地解析/在线解析”单选项唯一控制，不再有独立复选框。
             Dim eff As BaiduOcrOptions = OcrConfigProvider.LoadBaiduOptions()
-            chkOcrEnabled.Checked = eff.Enabled
             txtApiKey.Text = If(eff.ApiKey, String.Empty)
             txtSecretKey.Text = If(eff.SecretKey, String.Empty)
             ' 若 My.Settings 中已有 SK 但无法在当前 Windows 用户解密，提示重输（不阻断）。
@@ -152,7 +152,9 @@ Public Class SettingsForm
         End If
 
         ' —— 在线 OCR 校验 ——
-        If chkOcrEnabled.Checked Then
+        ' 校验入口由“在线解析”单选项决定（外网版且选择在线解析时才校验 AK/SK/URL 等）。
+        Dim onlineParseSelected As Boolean = BuildFeatures.OnlineParserEnabled AndAlso rdoOnlineParse.Checked
+        If onlineParseSelected Then
             If String.IsNullOrEmpty(apiKey) OrElse String.IsNullOrEmpty(secretKey) Then
                 MessageBox.Show(UserFriendlyMessageProvider.Describe(AppErrorCode.OcrConfigMissing).ToUserText(),
                                 "配置不完整", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -185,7 +187,9 @@ Public Class SettingsForm
 
         Try
             My.Settings.ArchiveFolderPath = If(txtFolderPath.Text, String.Empty).Trim()
-            My.Settings.OcrEnabled = chkOcrEnabled.Checked
+            ' 旧的 OcrEnabled 字段仅为配置兼容而保留（业务代码不再依赖它）：
+            ' 令其镜像“在线解析”单选项的有效值，避免旧配置读取到过期状态。
+            My.Settings.OcrEnabled = onlineParseSelected
             My.Settings.BaiduApiKey = apiKey
             ' Secret Key 经 DPAPI 加密后保存（不明文存 user.config）。
             ProtectedSettingsProvider.SetSecretKey(secretKey)

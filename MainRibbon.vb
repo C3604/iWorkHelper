@@ -77,6 +77,18 @@ Public Class MainRibbon
                     progress = Nothing
                 End If
 
+                ' —— 归档正常结束、且本批确有文件成功归档 → 打开/激活归档目录（整批仅一次）——
+                ' 无成功归档文件则不打开；打开/激活失败仅记日志，不影响归档主流程完成状态。
+                Try
+                    If batch IsNot Nothing AndAlso batch.ArchivedFileCount > 0 Then
+                        ExplorerFolderService.OpenOrActivateFolder(archiveFolder)
+                    Else
+                        AppLogger.Info("本批无成功归档文件，跳过打开归档目录。")
+                    End If
+                Catch openEx As Exception
+                    AppLogger.Warn("打开归档目录调用异常（已忽略，不影响归档）：" & openEx.Message)
+                End Try
+
                 ShowSummary(batch)
             End Using ' 运行锁在此释放
         Catch ex As Exception

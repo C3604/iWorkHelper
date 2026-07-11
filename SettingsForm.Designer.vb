@@ -25,7 +25,6 @@ Partial Class SettingsForm
     Friend WithEvents folderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
     Friend WithEvents lblFolder As System.Windows.Forms.Label
     Friend WithEvents grpOcr As System.Windows.Forms.GroupBox
-    Friend WithEvents chkOcrEnabled As System.Windows.Forms.CheckBox
     Friend WithEvents lblApiKey As System.Windows.Forms.Label
     Friend WithEvents txtApiKey As System.Windows.Forms.TextBox
     Friend WithEvents lblSecretKey As System.Windows.Forms.Label
@@ -65,7 +64,6 @@ Partial Class SettingsForm
         Me.folderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.lblFolder = New System.Windows.Forms.Label()
         Me.grpOcr = New System.Windows.Forms.GroupBox()
-        Me.chkOcrEnabled = New System.Windows.Forms.CheckBox()
         Me.lblApiKey = New System.Windows.Forms.Label()
         Me.txtApiKey = New System.Windows.Forms.TextBox()
         Me.lblSecretKey = New System.Windows.Forms.Label()
@@ -129,7 +127,7 @@ Partial Class SettingsForm
         'rdoOnlineParse
         '
         Me.rdoOnlineParse.AutoSize = True
-        Me.rdoOnlineParse.Location = New System.Drawing.Point(160, 40)
+        Me.rdoOnlineParse.Location = New System.Drawing.Point(257, 40)
         Me.rdoOnlineParse.Name = "rdoOnlineParse"
         Me.rdoOnlineParse.Size = New System.Drawing.Size(71, 16)
         Me.rdoOnlineParse.TabIndex = 3
@@ -139,7 +137,7 @@ Partial Class SettingsForm
         'lblVersion
         '
         Me.lblVersion.AutoSize = True
-        Me.lblVersion.Location = New System.Drawing.Point(10, 530)
+        Me.lblVersion.Location = New System.Drawing.Point(10, 500)
         Me.lblVersion.Name = "lblVersion"
         Me.lblVersion.Size = New System.Drawing.Size(41, 12)
         Me.lblVersion.TabIndex = 9
@@ -156,7 +154,6 @@ Partial Class SettingsForm
         '
         'grpOcr
         '
-        Me.grpOcr.Controls.Add(Me.chkOcrEnabled)
         Me.grpOcr.Controls.Add(Me.lblApiKey)
         Me.grpOcr.Controls.Add(Me.txtApiKey)
         Me.grpOcr.Controls.Add(Me.lblSecretKey)
@@ -177,25 +174,15 @@ Partial Class SettingsForm
         Me.grpOcr.Controls.Add(Me.btnTestOcr)
         Me.grpOcr.Location = New System.Drawing.Point(9, 65)
         Me.grpOcr.Name = "grpOcr"
-        Me.grpOcr.Size = New System.Drawing.Size(430, 290)
+        Me.grpOcr.Size = New System.Drawing.Size(430, 260)
         Me.grpOcr.TabIndex = 4
         Me.grpOcr.TabStop = False
-        Me.grpOcr.Text = "在线 OCR（百度智能财务票据识别）"
-        '
-        'chkOcrEnabled
-        '
-        Me.chkOcrEnabled.AutoSize = True
-        Me.chkOcrEnabled.Location = New System.Drawing.Point(15, 24)
-        Me.chkOcrEnabled.Name = "chkOcrEnabled"
-        Me.chkOcrEnabled.Size = New System.Drawing.Size(96, 16)
-        Me.chkOcrEnabled.TabIndex = 0
-        Me.chkOcrEnabled.Text = "启用在线 OCR"
-        Me.chkOcrEnabled.UseVisualStyleBackColor = True
+        Me.grpOcr.Text = "在线 OCR 配置"
         '
         'lblApiKey
         '
         Me.lblApiKey.AutoSize = True
-        Me.lblApiKey.Location = New System.Drawing.Point(15, 54)
+        Me.lblApiKey.Location = New System.Drawing.Point(15, 24)
         Me.lblApiKey.Name = "lblApiKey"
         Me.lblApiKey.Size = New System.Drawing.Size(59, 12)
         Me.lblApiKey.TabIndex = 1
@@ -203,7 +190,7 @@ Partial Class SettingsForm
         '
         'txtApiKey
         '
-        Me.txtApiKey.Location = New System.Drawing.Point(110, 51)
+        Me.txtApiKey.Location = New System.Drawing.Point(110, 21)
         Me.txtApiKey.Name = "txtApiKey"
         Me.txtApiKey.Size = New System.Drawing.Size(300, 21)
         Me.txtApiKey.TabIndex = 1
@@ -211,7 +198,7 @@ Partial Class SettingsForm
         'lblSecretKey
         '
         Me.lblSecretKey.AutoSize = True
-        Me.lblSecretKey.Location = New System.Drawing.Point(15, 84)
+        Me.lblSecretKey.Location = New System.Drawing.Point(15, 54)
         Me.lblSecretKey.Name = "lblSecretKey"
         Me.lblSecretKey.Size = New System.Drawing.Size(77, 12)
         Me.lblSecretKey.TabIndex = 2
@@ -219,7 +206,7 @@ Partial Class SettingsForm
         '
         'txtSecretKey
         '
-        Me.txtSecretKey.Location = New System.Drawing.Point(110, 81)
+        Me.txtSecretKey.Location = New System.Drawing.Point(110, 51)
         Me.txtSecretKey.Name = "txtSecretKey"
         Me.txtSecretKey.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtSecretKey.Size = New System.Drawing.Size(300, 21)
@@ -228,7 +215,7 @@ Partial Class SettingsForm
         'lblApiUrl
         '
         Me.lblApiUrl.AutoSize = True
-        Me.lblApiUrl.Location = New System.Drawing.Point(15, 114)
+        Me.lblApiUrl.Location = New System.Drawing.Point(15, 84)
         Me.lblApiUrl.Name = "lblApiUrl"
         Me.lblApiUrl.Size = New System.Drawing.Size(65, 12)
         Me.lblApiUrl.TabIndex = 3
@@ -236,7 +223,7 @@ Partial Class SettingsForm
         '
         'txtApiUrl
         '
-        Me.txtApiUrl.Location = New System.Drawing.Point(110, 111)
+        Me.txtApiUrl.Location = New System.Drawing.Point(110, 81)
         Me.txtApiUrl.Name = "txtApiUrl"
         Me.txtApiUrl.Size = New System.Drawing.Size(300, 21)
         Me.txtApiUrl.TabIndex = 3
@@ -244,7 +231,7 @@ Partial Class SettingsForm
         'lblTokenUrl
         '
         Me.lblTokenUrl.AutoSize = True
-        Me.lblTokenUrl.Location = New System.Drawing.Point(15, 144)
+        Me.lblTokenUrl.Location = New System.Drawing.Point(15, 114)
         Me.lblTokenUrl.Name = "lblTokenUrl"
         Me.lblTokenUrl.Size = New System.Drawing.Size(77, 12)
         Me.lblTokenUrl.TabIndex = 4
@@ -252,7 +239,7 @@ Partial Class SettingsForm
         '
         'txtTokenUrl
         '
-        Me.txtTokenUrl.Location = New System.Drawing.Point(110, 141)
+        Me.txtTokenUrl.Location = New System.Drawing.Point(110, 111)
         Me.txtTokenUrl.Name = "txtTokenUrl"
         Me.txtTokenUrl.Size = New System.Drawing.Size(300, 21)
         Me.txtTokenUrl.TabIndex = 4
@@ -260,7 +247,7 @@ Partial Class SettingsForm
         'lblTimeout
         '
         Me.lblTimeout.AutoSize = True
-        Me.lblTimeout.Location = New System.Drawing.Point(15, 176)
+        Me.lblTimeout.Location = New System.Drawing.Point(15, 146)
         Me.lblTimeout.Name = "lblTimeout"
         Me.lblTimeout.Size = New System.Drawing.Size(77, 12)
         Me.lblTimeout.TabIndex = 5
@@ -269,7 +256,7 @@ Partial Class SettingsForm
         'numTimeout
         '
         Me.numTimeout.Increment = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.numTimeout.Location = New System.Drawing.Point(110, 174)
+        Me.numTimeout.Location = New System.Drawing.Point(110, 144)
         Me.numTimeout.Maximum = New Decimal(New Integer() {120000, 0, 0, 0})
         Me.numTimeout.Minimum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.numTimeout.Name = "numTimeout"
@@ -280,7 +267,7 @@ Partial Class SettingsForm
         'lblMaxPages
         '
         Me.lblMaxPages.AutoSize = True
-        Me.lblMaxPages.Location = New System.Drawing.Point(230, 176)
+        Me.lblMaxPages.Location = New System.Drawing.Point(230, 146)
         Me.lblMaxPages.Name = "lblMaxPages"
         Me.lblMaxPages.Size = New System.Drawing.Size(89, 12)
         Me.lblMaxPages.TabIndex = 6
@@ -288,7 +275,7 @@ Partial Class SettingsForm
         '
         'numMaxPages
         '
-        Me.numMaxPages.Location = New System.Drawing.Point(330, 174)
+        Me.numMaxPages.Location = New System.Drawing.Point(330, 144)
         Me.numMaxPages.Maximum = New Decimal(New Integer() {20, 0, 0, 0})
         Me.numMaxPages.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numMaxPages.Name = "numMaxPages"
@@ -299,7 +286,7 @@ Partial Class SettingsForm
         'chkProbability
         '
         Me.chkProbability.AutoSize = True
-        Me.chkProbability.Location = New System.Drawing.Point(15, 208)
+        Me.chkProbability.Location = New System.Drawing.Point(15, 178)
         Me.chkProbability.Name = "chkProbability"
         Me.chkProbability.Size = New System.Drawing.Size(84, 16)
         Me.chkProbability.TabIndex = 7
@@ -309,7 +296,7 @@ Partial Class SettingsForm
         'chkLocation
         '
         Me.chkLocation.AutoSize = True
-        Me.chkLocation.Location = New System.Drawing.Point(150, 208)
+        Me.chkLocation.Location = New System.Drawing.Point(150, 178)
         Me.chkLocation.Name = "chkLocation"
         Me.chkLocation.Size = New System.Drawing.Size(96, 16)
         Me.chkLocation.TabIndex = 8
@@ -319,7 +306,7 @@ Partial Class SettingsForm
         'chkVerify
         '
         Me.chkVerify.AutoSize = True
-        Me.chkVerify.Location = New System.Drawing.Point(290, 208)
+        Me.chkVerify.Location = New System.Drawing.Point(290, 178)
         Me.chkVerify.Name = "chkVerify"
         Me.chkVerify.Size = New System.Drawing.Size(96, 16)
         Me.chkVerify.TabIndex = 9
@@ -329,7 +316,7 @@ Partial Class SettingsForm
         'chkPreferLocal
         '
         Me.chkPreferLocal.AutoSize = True
-        Me.chkPreferLocal.Location = New System.Drawing.Point(15, 238)
+        Me.chkPreferLocal.Location = New System.Drawing.Point(15, 208)
         Me.chkPreferLocal.Name = "chkPreferLocal"
         Me.chkPreferLocal.Size = New System.Drawing.Size(144, 16)
         Me.chkPreferLocal.TabIndex = 10
@@ -339,7 +326,7 @@ Partial Class SettingsForm
         'chkAutoFallback
         '
         Me.chkAutoFallback.AutoSize = True
-        Me.chkAutoFallback.Location = New System.Drawing.Point(200, 238)
+        Me.chkAutoFallback.Location = New System.Drawing.Point(200, 208)
         Me.chkAutoFallback.Name = "chkAutoFallback"
         Me.chkAutoFallback.Size = New System.Drawing.Size(180, 16)
         Me.chkAutoFallback.TabIndex = 11
@@ -348,7 +335,7 @@ Partial Class SettingsForm
         '
         'btnTestOcr
         '
-        Me.btnTestOcr.Location = New System.Drawing.Point(15, 260)
+        Me.btnTestOcr.Location = New System.Drawing.Point(15, 230)
         Me.btnTestOcr.Name = "btnTestOcr"
         Me.btnTestOcr.Size = New System.Drawing.Size(150, 24)
         Me.btnTestOcr.TabIndex = 12
@@ -357,7 +344,7 @@ Partial Class SettingsForm
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(349, 527)
+        Me.btnSave.Location = New System.Drawing.Point(349, 497)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(90, 25)
         Me.btnSave.TabIndex = 7
@@ -374,7 +361,7 @@ Partial Class SettingsForm
         Me.grpNaming.Controls.Add(Me.txtUnknownTemplate)
         Me.grpNaming.Controls.Add(Me.btnTplVars)
         Me.grpNaming.Controls.Add(Me.btnTplPreview)
-        Me.grpNaming.Location = New System.Drawing.Point(9, 360)
+        Me.grpNaming.Location = New System.Drawing.Point(9, 330)
         Me.grpNaming.Name = "grpNaming"
         Me.grpNaming.Size = New System.Drawing.Size(430, 155)
         Me.grpNaming.TabIndex = 6
@@ -451,7 +438,7 @@ Partial Class SettingsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(451, 560)
+        Me.ClientSize = New System.Drawing.Size(451, 530)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.grpNaming)
         Me.Controls.Add(Me.grpOcr)

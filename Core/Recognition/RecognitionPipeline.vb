@@ -1,6 +1,7 @@
 ''' <summary>
 ''' 识别调度器：实现"本地优先 / 在线兜底"的完整策略，并标记识别来源。
-''' 策略（对应配置 PreferLocalParse / AutoFallbackToOcr / OcrEnabled）：
+''' 策略（对应配置 PreferLocalParse / AutoFallbackToOcr；在线 OCR 是否可调用由
+''' 编译期版本 + ParseMode 收口到 BaiduOcrOptions.Enabled）：
 '''  1. 始终先做本地文本抽取 + 本地解析（成本低，且作为 OCR 失败时的兜底）；
 '''  2. 若优先本地且本地关键字段充分 → 直接采用本地，不调用 OCR；
 '''  3. 若本地文本为空/疑似图片型/字段不足，或用户设置以在线为主 → 调用百度 OCR；

@@ -376,6 +376,7 @@
     <Compile Include="Core\Common\AppError.vb" />
     <Compile Include="Core\Common\UserFriendlyMessageProvider.vb" />
     <Compile Include="Core\Common\BuildFeatures.vb" />
+    <Compile Include="Core\Common\ExplorerFolderService.vb" />
     <Compile Include="Core\Logging\AppLogger.vb" />
     <Compile Include="Core\Diagnostics\StartupPerformanceTracker.vb" />
     <Compile Include="Core\Configuration\BaiduOcrOptions.vb" />

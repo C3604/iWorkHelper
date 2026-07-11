@@ -24,7 +24,7 @@ iWorkHelper 是一个基于 Outlook VSTO、VB.NET 和 .NET Framework 4.8 的 Out
 - VSTO / Microsoft Office Tools for Outlook
 - WinForms
 - PdfPig 0.1.14
-- 百度 OCR
+- 百度 OCR（外网版本可选）
 - Windows DPAPI
 - MSBuild / Visual Studio 17 解决方案格式
 

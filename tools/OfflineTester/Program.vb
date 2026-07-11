@@ -16,6 +16,28 @@ Module OfflineTesterProgram
         Try
             AppLogger.Initialize()
 
+            ' —— 资源管理器目录打开/激活诊断（真实环境验证匹配逻辑）——
+            If rawArgs IsNot Nothing AndAlso rawArgs.Length >= 1 Then
+                Select Case rawArgs(0).ToLowerInvariant()
+                    Case "--explorer-scan"
+                        Dim target As String = If(rawArgs.Length >= 2, rawArgs(1), Environment.CurrentDirectory)
+                        Console.WriteLine(ExplorerFolderService.BuildScanReport(target))
+                        Return
+                    Case "--explorer-normalize"
+                        If rawArgs.Length >= 2 Then
+                            For i As Integer = 1 To rawArgs.Length - 1
+                                Console.WriteLine(rawArgs(i) & "  =>  " & ExplorerFolderService.NormalizeForDiagnostics(rawArgs(i)))
+                            Next
+                        End If
+                        Return
+                    Case "--explorer-open"
+                        Dim target As String = If(rawArgs.Length >= 2, rawArgs(1), Environment.CurrentDirectory)
+                        ExplorerFolderService.OpenOrActivateFolder(target)
+                        Console.WriteLine("已调用 OpenOrActivateFolder（详见日志）：" & target)
+                        Return
+                End Select
+            End If
+
             Dim opts As CliOptions = CliOptions.Parse(rawArgs)
 
             If Not opts.ErrorMessage Is Nothing Then

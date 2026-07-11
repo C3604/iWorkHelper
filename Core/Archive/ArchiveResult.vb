@@ -125,6 +125,23 @@ Public Class ArchiveBatchResult
         End Get
     End Property
 
+    ''' <summary>
+    ''' 本批实际写入归档目录的文件数（用于决定归档结束后是否自动打开归档目录）。
+    ''' 跳过、失败均不计；已写入文件的项（成功 / 部分成功 / 需 OCR）计入。
+    ''' </summary>
+    Public ReadOnly Property ArchivedFileCount As Integer
+        Get
+            Dim n As Integer = 0
+            For Each it As ArchiveItemResult In Items
+                If it.Status <> ProcessStatus.Failure AndAlso it.Status <> ProcessStatus.Skipped _
+                   AndAlso Not String.IsNullOrEmpty(it.TargetPath) Then
+                    n += 1
+                End If
+            Next
+            Return n
+        End Get
+    End Property
+
     Private Function CountByStatus(status As ProcessStatus) As Integer
         Dim n As Integer = 0
         For Each it As ArchiveItemResult In Items
