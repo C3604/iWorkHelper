@@ -1,149 +1,204 @@
 # iWorkHelper
 
-## 项目简介
+Outlook VSTO 加载项，用于批量处理邮件中的 PDF 附件（发票、行程单），完成自动识别、合并、命名和归档。
 
-iWorkHelper 是一个基于 Outlook VSTO、VB.NET 和 .NET Framework 4.8 的 Outlook 加载项，用于批量处理邮件中的 PDF 附件，完成识别、合并、命名和归档。项目重点覆盖滴滴发票/行程单场景，同时支持常规发票与未识别 PDF 的分类处理。
+**当前版本**：`v1.2.260713.1`
 
-## 核心功能
+## 主要功能
 
-- 在 Outlook Ribbon 中提供“归档”和“设置”入口。
-- 按邮件批量读取 PDF 附件并执行归档流程。
-- 滴滴发票与行程单按邮件合并为单个 PDF 后识别、命名和归档。
-- 常规发票单独识别、命名和归档。
-- 未识别 PDF 按固定规则保留原始文件名信息。
-- 本地解析基于 PdfPig 文本抽取与规则识别。
-- 外网版本支持百度 OCR 在线解析；本地字段不足时可自动回退在线 OCR。
-- 支持自定义命名模板、预检查、进度展示与结果报告。
-- 百度 OCR Secret Key 通过 Windows DPAPI 保护。
-- 提供 `OfflineTester` 离线测试与诊断工具。
+- 在 Outlook 功能区提供"归档"和"设置"入口。
+- 批量读取选中邮件的 PDF 附件，按邮件类型自动分流处理。
+- **滴滴发票**：同一封邮件的发票与行程单 PDF 合并为一个文件，识别后统一命名归档。
+- **常规发票**：每张增值税发票 PDF 单独识别、命名、归档。
+- **未识别 PDF**：无法识别的 PDF 按 `未识别_{原始文件名}` 保留归档，不丢弃文件。
+- 本地解析基于 PdfPig 文本抽取与规则识别（坐标行重建、候选评分）。
+- 外网版支持百度 OCR 在线解析，本地字段不足时自动回退。
+- 自定义命名模板，支持变量说明与预览。
+- 归档前预检查、运行锁防并发、进度展示、结果报告。
+- Secret Key 通过 Windows DPAPI 加密保护。
+- 提供 OfflineTester 离线测试与诊断工具。
+
+## 适用场景
+
+- 需要批量归档邮件中的滴滴出行发票和行程单。
+- 需要批量归档常规增值税发票。
+- 内网环境下仅使用本地 PDF 文本解析。
+- 外网环境下可选配百度 OCR 增强识别。
 
 ## 技术栈
 
-- VB.NET
-- .NET Framework 4.8
-- VSTO / Microsoft Office Tools for Outlook
-- WinForms
-- PdfPig 0.1.14
-- 百度 OCR（外网版本可选）
-- Windows DPAPI
-- MSBuild / Visual Studio 17 解决方案格式
+| 技术 | 说明 |
+|------|------|
+| VB.NET | 开发语言 |
+| .NET Framework 4.8 | 目标框架 |
+| VSTO 4.0 | Outlook 加载项框架 |
+| WinForms | 设置窗体与进度窗口 |
+| PdfPig 0.1.14 | PDF 文本抽取与合并 |
+| 百度 OCR | 在线发票识别（外网版可选） |
+| Windows DPAPI | Secret Key 加密存储 |
+| MSBuild / VS2022 | 构建工具 |
 
-## 项目结构
+## 项目目录结构
 
-```text
+```
 iWorkhelper/
-├── Core/                  # 归档、识别、OCR、配置、安全、日志、工作流核心代码
-├── docs/                  # 架构、部署、测试、阶段报告与维护文档
-├── My Project/            # VB.NET 项目设置、资源与程序集信息
-├── Resources/             # Ribbon 图标等静态资源
+├── Core/                     # 业务核心
+│   ├── Archive/              # 命名规则、模板引擎、归档规划与执行
+│   ├── Common/               # 结果对象、路径工具、错误处理、编译期开关
+│   ├── Configuration/        # OCR 配置读取
+│   ├── Diagnostics/          # 启动性能跟踪
+│   ├── Invoice/              # 发票/行程数据模型
+│   ├── Logging/              # 线程安全文件日志
+│   ├── Mail/                 # 邮件附件读取与分组
+│   ├── Ocr/Baidu/            # 百度 OCR 接入
+│   ├── Pdf/                  # PDF 文本抽取、布局分析、合并
+│   ├── Recognition/          # 识别管道、本地/在线识别器
+│   ├── Security/             # DPAPI 密钥加密
+│   └── Workflow/             # 批量归档编排、分流、预检查、运行锁
+├── docs/                     # 项目文档
+├── My Project/               # 程序集信息与设置
+├── Resources/                # Ribbon 图标
 ├── tools/
-│   ├── OfflineTester/     # 独立离线测试控制台工程
-│   └── OutlookResiliency/ # Outlook 加载项诊断脚本
-├── iWorkhelper.sln        # 主解决方案
-├── iWorkhelper.vbproj     # Outlook VSTO 主工程
-└── packages.config        # NuGet 依赖清单（旧式 packages.config）
+│   ├── OfflineTester/        # 离线测试控制台工具
+│   └── OutlookResiliency/    # 加载项诊断脚本
+├── iWorkhelper.sln           # 解决方案
+├── iWorkhelper.vbproj        # 主工程文件
+├── MainRibbon.vb             # 功能区（归档/设置按钮）
+├── SettingsForm.vb           # 设置窗体
+├── ProgressForm.vb           # 进度窗口
+├── ThisAddIn.vb              # 加载项入口
+└── packages.config           # NuGet 依赖清单
 ```
 
-## 构建要求
+## 内网版与外网版
 
-- 建议使用支持 .NET Framework 4.8 和 Office/VSTO 开发的 Visual Studio 版本；当前解决方案格式为 Visual Studio 17，推荐 Visual Studio 2022。
-- 需要安装 Office/Outlook 桌面版、VSTO Runtime 和相应的 Office 开发组件。
-- 项目目标框架为 `.NET Framework 4.8`。
-- 主工程为 Outlook 加载项，实际调试和加载行为依赖 Windows + Outlook 桌面环境。
-- 依赖通过 `packages.config` 管理，可使用 MSBuild Restore 恢复。
+| 特性 | Release-Intranet（内网版） | Release-Internet（外网版） |
+|------|---------------------------|---------------------------|
+| 编译常量 | `INTRANET_BUILD` | `INTERNET_BUILD` |
+| 在线 OCR | 禁用 | 可选启用 |
+| 设置界面 | 隐藏 OCR 配置和在线解析选项 | 完整显示 |
+| 版本标识 | 显示"（内网版）" | 无额外标识 |
+| 外网请求 | 不产生任何外网请求 | 启用 OCR 时调用百度 API |
 
-## 构建配置
+**默认安全策略**：未定义 `INTERNET_BUILD` 即禁用在线解析。内网版即使配置文件残留在线参数也不调用 OCR。
 
-- `Debug`：调试构建。
-- `Release`：发布构建，但未定义 `INTERNET_BUILD`，按安全默认策略禁用在线解析。
-- `Release-Intranet`：定义 `INTRANET_BUILD`，禁用在线 OCR，并在设置界面隐藏在线解析相关 UI。
-- `Release-Internet`：定义 `INTERNET_BUILD`，允许配置本地解析与百度 OCR 在线解析。
+## 编译配置
 
-项目当前编译常量策略以 `Core/Common/BuildFeatures.vb` 为准：只有定义了 `INTERNET_BUILD` 时才启用在线解析，否则默认关闭。
+| 配置 | 编译常量 | 输出目录 | 在线 OCR |
+|------|---------|---------|---------|
+| Debug | （无） | `bin\Debug\` | 禁用 |
+| Release | （无） | `bin\Release\` | 禁用 |
+| Release-Intranet | `INTRANET_BUILD` | `bin\Release-Intranet\` | 禁用 |
+| Release-Internet | `INTERNET_BUILD` | `bin\Release-Internet\` | 启用 |
 
-## 配置说明
+## 环境要求
 
-用户设置保存在 `My.Settings`，主要包括：
+- Windows 10/11
+- Outlook 桌面版（Office 365 或 Office 2016+）
+- .NET Framework 4.8
+- VSTO Runtime 4.0
 
-- 归档目录：`ArchiveFolderPath`
-- 解析模式：`ParseMode`
-- OCR 开关：`OcrEnabled`
-- 百度 OCR 接口地址与 Token 地址
-- 自定义命名模板
+### 开发环境
 
-敏感信息约定：
+- Visual Studio 2022，安装"Office/SharePoint 开发（VSTO）"工作负载
+- .NET Framework 4.8 开发包
 
-- `BaiduApiKey` 可保存为普通配置。
-- `BaiduSecretKey` 通过 `ProtectedSettingsProvider` 使用 DPAPI 加密存储。
-- 兼容的本机外部配置文件为 `%AppData%\iWorkHelper\baidu-ocr.config.xml`，不应提交入库。
+## 编译步骤
 
-示例占位：
+```bash
+# 内网版
+MSBuild iWorkhelper.sln /p:Configuration="Release-Intranet" /p:Platform="Any CPU"
 
-```text
-API Key: <your-api-key>
-Secret Key: <your-secret-key>
+# 外网版
+MSBuild iWorkhelper.sln /p:Configuration="Release-Internet" /p:Platform="Any CPU"
+
+# OfflineTester（调试工具）
+MSBuild tools\OfflineTester\OfflineTester.vbproj /t:Build /p:Configuration=Debug /p:Platform=AnyCPU
 ```
 
-## 默认命名规则
+## 安装与部署
 
-以当前代码行为为准：
+VSTO 加载项通过 ClickOnce 发布或手动注册安装到 Outlook。加载行为设置为 `LoadBehavior=3`（随 Outlook 自动加载）。
 
-- 滴滴统一归档命名：`{乘车日期}_{金额}_{出发地点}_{到达地点}`
-- 常规发票命名：`{开票日期}_{金额}_{销售方名称}`
-- 未识别 PDF：`未识别_{原始文件名}`
+签名使用临时证书 `iWorkhelper_TemporaryKey.pfx`，正式部署需替换为正式代码签名证书。
 
-说明：
+## 基本使用方法
+
+1. 在 Outlook 中选中一封或多封邮件。
+2. 点击功能区 **工作助手 → 发票归档 → 归档**。
+3. 系统执行预检查后显示进度窗口。
+4. 完成后弹出汇总，详细结果见归档报告和日志。
+
+首次使用前需在 **设置** 中配置归档目录。
+
+## 配置与安全
+
+### 基本配置
+
+通过 Outlook 功能区 **工作助手 → 设置** 打开设置窗口：
+
+- **归档目录**：PDF 归档后存放位置。
+- **命名模板**：滴滴发票、常规发票、未识别 PDF 三类模板可分别自定义。
+- **在线 OCR**（仅外网版）：配置百度 API Key / Secret Key。
+
+设置保存后直接关闭窗口。
+
+### 安全说明
+
+- Secret Key 使用 Windows DPAPI（CurrentUser 作用域）加密存储，不明文保存。
+- 日志和报告中不输出 AK、SK 或 Access Token。
+- 内网版在编译期禁用在线解析，运行时无任何外网请求。
+- `.gitignore` 已覆盖 `user.config`、`baidu-ocr.config.xml`、样例 PDF 等敏感文件。
+
+## 命名规则与默认行为
+
+| 类型 | 默认模板 | 示例 |
+|------|---------|------|
+| 滴滴发票 | `{乘车日期}_{金额}_{出发地点}_{到达地点}` | `20260518_138.46_上海虹桥站_上海市徐汇区.pdf` |
+| 常规发票 | `{开票日期}_{金额}_{销售方名称}` | `20260526_138.46_某某科技有限公司.pdf` |
+| 未识别 PDF | `未识别_{原始文件名}` | `未识别_某某扫描件.pdf` |
 
 - `{乘车日期}` 优先取行程出发日期，其次取开票日期。
-- `{金额}` 优先取行程金额，其次取价税合计。
-- 当字段严重不足时，会回退到内部 fallback 规则：`未识别票据_{邮件主题或原附件名}_{时间戳}`。
+- `{金额}` 对滴滴取行程金额 > 价税合计；对常规发票取价税合计 > 金额。
+- 空字段自动跳过，非法字符自动清理，同名文件自动追加序号。
+- 字段严重不足时回退为 `未识别票据_{邮件主题}_{时间戳}`。
 
-## 使用流程
+## 常见问题
 
-1. 在 Outlook 中选中需要处理的邮件。
-2. 点击 Ribbon 中的“归档”按钮。
-3. 插件读取邮件中的 PDF 附件并执行预检查。
-4. 按邮件类型完成合并、识别、命名和归档。
-5. 在进度窗口查看状态，并在结束后查看结果汇总、日志和归档报告。
+| 问题 | 解决方案 |
+|------|---------|
+| 加载项被 Outlook 禁用 | 文件 → 选项 → 加载项 → 已禁用项目 → 启用 |
+| "尚未配置归档目录" | 在设置中选择归档文件夹 |
+| "已有归档任务正在运行" | 等待当前任务完成 |
+| PDF 命名为"未识别_..." | 该 PDF 未能识别为发票，已按未识别归档 |
+| 换机器后 OCR 失效 | DPAPI 仅当前用户可解密，需重新输入 Secret Key |
+| 常规发票被误当未识别 | 该 PDF 缺发票特征，可用 OfflineTester --classify 复核 |
 
-## OfflineTester
+详细排查见 [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)。
 
-`OfflineTester` 位于 `tools/OfflineTester/`，用于在不启动 Outlook 的情况下验证本地解析、OCR 集成和命名规则。
+## 版本号规则
 
-常见命令示例：
+格式：`a.b.yyMMdd.d`
 
-```text
-OfflineTester.exe --selftest
-OfflineTester.exe <pdf或目录> --local-only
-OfflineTester.exe <pdf或目录> --ocr
-OfflineTester.exe <pdf或目录> --general-invoice --dump-candidates
-OfflineTester.exe --parse-ocr-json <脱敏json文件>
-OfflineTester.exe --preflight [归档目录]
-OfflineTester.exe --save-baidu-config
-OfflineTester.exe <pdf或目录> --use-config --force-ocr
-```
+- `a`：大版本
+- `b`：小版本
+- `yyMMdd`：发布日期
+- `d`：修订次数
 
-## 隐私与安全
+例：`1.2.260713.1` 表示 2026 年 7 月 13 日的第 1 次发布。
 
-- 发票、行程单和邮件附件可能包含敏感信息，不应提交真实票据样例。
-- 百度 OCR 仅在外网版本且用户显式启用时使用。
-- 内网版默认禁止在线解析，并隐藏在线 OCR 相关 UI。
-- Secret Key 使用 Windows DPAPI 保护；日志中不应出现 AK、SK 或 Access Token 明文。
-- 日志与归档结果报告默认对邮件主题、附件名和本机路径做脱敏处理，避免直接落盘真实内容。
-- 本仓库不应包含真实证书私钥、真实用户配置或本机发布产物。
+## 文档入口
 
-## 已知限制
-
-- 仅支持 Windows 和 Outlook 桌面版。
-- 依赖 VSTO、Office 运行时和 .NET Framework 4.8。
-- 本地规则识别依赖 PDF 文本层质量，扫描件或图片型 PDF 可能需要 OCR。
-- Outlook 可能因加载性能、签名或信任策略禁用加载项。
-- 构建与发布仍受 VSTO 签名证书和目标环境配置影响。
-
-## 开发状态
-
-项目处于持续开发和内部验证阶段。源码已包含主流程、离线测试与多份设计/阶段文档，但仍需结合实际 Outlook 环境继续验证构建、签名、加载和归档效果。
+| 文档 | 内容 |
+|------|------|
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | 系统架构、代码结构、核心流程、安全设计 |
+| [DEVELOPMENT.md](docs/DEVELOPMENT.md) | 开发环境、调试方法、测试工具、设计决策 |
+| [BUILD-AND-RELEASE.md](docs/BUILD-AND-RELEASE.md) | 编译配置、构建命令、版本规则、发布流程 |
+| [CONFIGURATION.md](docs/CONFIGURATION.md) | 用户设置、OCR 配置、命名模板变量 |
+| [USER-GUIDE.md](docs/USER-GUIDE.md) | 使用指南、操作步骤、处理规则 |
+| [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | 故障排查、诊断工具、日志位置 |
+| [CHANGELOG.md](docs/CHANGELOG.md) | 版本变更记录 |
 
 ## 许可证
 
-当前仓库暂未声明开源许可证。未经授权，不得复制、修改或分发本仓库内容。
+当前仓库未声明开源许可证。未经授权，不得复制、修改或分发本仓库内容。
