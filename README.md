@@ -1,10 +1,10 @@
-# iWorkHelper
+# oWorkHelper
 
-Outlook VSTO 加载项，用于批量处理邮件中的 PDF 附件（发票、行程单），完成自动识别、合并、命名和归档。
+`oWorkHelper` 是 [iWorkHelper Organization](https://github.com/iWorkHelper) 旗下的 Outlook VSTO 加载项，用于批量处理邮件中的 PDF 附件（发票、行程单），完成自动识别、合并、命名和归档。
 
 **当前版本**：`v1.2.260822.3`
 
-下载：[GitHub Releases](https://github.com/C3604/oWorkHelper/releases/latest)
+下载：[最新 Release](https://github.com/iWorkHelper/oWorkHelper/releases/latest)
 
 ## 主要功能
 
@@ -20,12 +20,12 @@ Outlook VSTO 加载项，用于批量处理邮件中的 PDF 附件（发票、�
 - Secret Key 通过 Windows DPAPI 加密保护。
 - 提供 OfflineTester 离线测试与诊断工具。
 
-## 适用场景
+## 运行环境
 
-- 需要批量归档邮件中的滴滴出行发票和行程单。
-- 需要批量归档常规增值税发票。
-- 内网环境下仅使用本地 PDF 文本解析。
-- 外网环境下可选配百度 OCR 增强识别。
+- Windows 10/11
+- Outlook 桌面版（Microsoft 365 或 Office 2016+）
+- .NET Framework 4.8
+- VSTO Runtime 4.0
 
 ## 技术栈
 
@@ -43,7 +43,7 @@ Outlook VSTO 加载项，用于批量处理邮件中的 PDF 附件（发票、�
 ## 项目目录结构
 
 ```
-oWorkhelper/
+oWorkHelper/
 ├── Core/                     # 业务核心
 │   ├── Archive/              # 命名规则、模板引擎、归档规划与执行
 │   ├── Common/               # 结果对象、路径工具、错误处理、编译期开关
@@ -84,7 +84,11 @@ oWorkhelper/
 
 **默认安全策略**：未定义 `INTERNET_BUILD` 即禁用在线解析。内网版即使配置文件残留在线参数也不调用 OCR。
 
-## 编译配置
+## 开发与编译
+
+开发环境需要 Visual Studio 2022、“Office/SharePoint 开发（VSTO）”工作负载和 .NET Framework 4.8 开发包。
+
+### 编译配置
 
 | 配置 | 编译常量 | 输出目录 | 在线 OCR |
 |------|---------|---------|---------|
@@ -93,19 +97,7 @@ oWorkhelper/
 | Release-Intranet | `INTRANET_BUILD` | `bin\Release-Intranet\` | 禁用 |
 | Release-Internet | `INTERNET_BUILD` | `bin\Release-Internet\` | 启用 |
 
-## 环境要求
-
-- Windows 10/11
-- Outlook 桌面版（Office 365 或 Office 2016+）
-- .NET Framework 4.8
-- VSTO Runtime 4.0
-
-### 开发环境
-
-- Visual Studio 2022，安装"Office/SharePoint 开发（VSTO）"工作负载
-- .NET Framework 4.8 开发包
-
-## 编译步骤
+### 编译步骤
 
 ```bash
 # 内网版
@@ -118,13 +110,13 @@ MSBuild oWorkhelper.sln /p:Configuration="Release-Internet" /p:Platform="Any CPU
 MSBuild tools\OfflineTester\OfflineTester.vbproj /t:Build /p:Configuration=Debug /p:Platform=AnyCPU
 ```
 
-## 安装与部署
+## 安装与使用
 
 VSTO 加载项通过 ClickOnce 发布或手动注册安装到 Outlook。加载行为设置为 `LoadBehavior=3`（随 Outlook 自动加载）。
 
 签名使用本地临时证书，证书文件由 `.gitignore` 排除；正式部署应替换为受信任的代码签名证书。
 
-## 基本使用方法
+### 基本使用方法
 
 1. 在 Outlook 中选中一封或多封邮件。
 2. 点击功能区 **工作助手 → 发票归档 → 归档**。
@@ -132,8 +124,6 @@ VSTO 加载项通过 ClickOnce 发布或手动注册安装到 Outlook。加载�
 4. 完成后弹出汇总，详细结果见归档报告和日志。
 
 首次使用前需在 **设置** 中配置归档目录。
-
-## 配置与安全
 
 ### 基本配置
 
@@ -145,7 +135,7 @@ VSTO 加载项通过 ClickOnce 发布或手动注册安装到 Outlook。加载�
 
 设置保存后直接关闭窗口。
 
-### 安全说明
+## 安全与隐私
 
 - Secret Key 使用 Windows DPAPI（CurrentUser 作用域）加密存储，不明文保存。
 - 日志和报告中不输出 AK、SK 或 Access Token。
@@ -201,6 +191,12 @@ VSTO 加载项通过 ClickOnce 发布或手动注册安装到 Outlook。加载�
 | [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | 故障排查、诊断工具、日志位置 |
 | [CHANGELOG.md](docs/CHANGELOG.md) | 版本变更记录 |
 
+## Release
+
+- [最新版本下载](https://github.com/iWorkHelper/oWorkHelper/releases/latest)
+- [全部 Releases](https://github.com/iWorkHelper/oWorkHelper/releases)
+- [问题反馈](https://github.com/iWorkHelper/oWorkHelper/issues)
+
 ## 许可证
 
-当前仓库未声明开源许可证。未经授权，不得复制、修改或分发本仓库内容。
+本项目采用 [MIT License](LICENSE) 开源许可证。

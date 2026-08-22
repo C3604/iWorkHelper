@@ -13,7 +13,7 @@
 
 1. Outlook → 文件 → 选项 → 加载项
 2. 底部"管理"下拉选"已禁用项目" → 转到
-3. 选择 iWorkHelper → 启用
+3. 选择 oWorkHelper → 启用
 4. 重启 Outlook
 
 也可通过注册表恢复：打开 `HKCU\Software\Microsoft\Office\16.0\Outlook\Resiliency\DisabledItems`，删除包含 iWorkHelper 的条目。

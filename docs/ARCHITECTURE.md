@@ -1,8 +1,8 @@
-# iWorkHelper 架构文档
+# oWorkHelper 架构文档
 
 ## 1. 项目定位
 
-iWorkHelper 是一个 Outlook VSTO 加载项，基于 VB.NET / .NET Framework 4.8 开发。其核心功能是批量处理邮件中的 PDF 附件，完成发票识别、PDF 合并、文件命名和归档操作。用户在 Outlook 中选中一批邮件后，一键即可将附件中的发票 PDF 按照识别结果自动命名并归档到指定目录。
+oWorkHelper 是 iWorkHelper Organization 旗下的 Outlook VSTO 加载项，基于 VB.NET / .NET Framework 4.8 开发。其核心功能是批量处理邮件中的 PDF 附件，完成发票识别、PDF 合并、文件命名和归档操作。用户在 Outlook 中选中一批邮件后，一键即可将附件中的发票 PDF 按照识别结果自动命名并归档到指定目录。
 
 ## 2. 技术栈
 
