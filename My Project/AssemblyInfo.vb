@@ -9,10 +9,10 @@ Imports System.Security
 
 '查看程序集特性的值
 
-<Assembly: AssemblyTitle("iWorkhelper")> 
+<Assembly: AssemblyTitle("oWorkhelper")> 
 <Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("iWorkhelper")>
-<Assembly: AssemblyProduct("iWorkhelper")>
+<Assembly: AssemblyCompany("oWorkhelper")>
+<Assembly: AssemblyProduct("oWorkhelper")>
 <Assembly: AssemblyCopyright("Copyright © 2026")>
 <Assembly: AssemblyTrademark("")> 
 
@@ -35,8 +35,10 @@ Imports System.Security
 ' 方法是按如下所示使用“*”: :
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.2.0.1")>
-<Assembly: AssemblyFileVersion("1.2.0.1")>
+' 数值版本供 CLR 与 VSTO 使用；9690 = 2026-07-13 距 2000-01-01 的天数。
+<Assembly: AssemblyVersion("1.2.9690.1")>
+<Assembly: AssemblyFileVersion("1.2.9690.1")>
+' 用户展示版本保留 a.b.YYMMDD.revision 语义，不用于 ClickOnce manifest。
 <Assembly: AssemblyInformationalVersion("1.2.260713.1")> 
 
 Friend Module DesignTimeConstants

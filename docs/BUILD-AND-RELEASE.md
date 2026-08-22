@@ -54,7 +54,13 @@ MSBuild tools\OfflineTester\OfflineTester.vbproj /t:Build /p:Configuration=Debug
 
 ## 5. 版本号规则
 
-版本号格式为 `a.b.yyMMdd.d`，例如 `1.2.260713.1`。
+用户展示版本格式为 `a.b.yyMMdd.d`，例如 `1.2.260713.1`。
+
+VSTO / ClickOnce 部署版本与展示版本解耦，格式为
+`Major.Minor.DateBuild.Revision`。`DateBuild` 是发布日期距
+`2000-01-01` 的天数；例如 2026-07-13 对应 `9690`，因此
+`1.2.260713.1` 的部署版本为 `1.2.9690.1`。四段均必须在
+`0~65535` 范围内。
 
 各段含义：
 
@@ -67,21 +73,21 @@ MSBuild tools\OfflineTester\OfflineTester.vbproj /t:Build /p:Configuration=Debug
 
 ### 版本号同步位置
 
-以下三处版本号必须保持一致：
+以下三处必须按同一次发布同步维护：
 
-1. **`My Project/AssemblyInfo.vb`**：`AssemblyVersion`、`AssemblyFileVersion`、`AssemblyInformationalVersion` 三个特性
-2. **`iWorkhelper.vbproj`**：`ApplicationVersion` 属性（ClickOnce 发布版本号）
+1. **`My Project/AssemblyInfo.vb`**：`AssemblyInformationalVersion` 保存用户展示版本；`AssemblyVersion` 和 `AssemblyFileVersion` 使用合法的数值版本
+2. **`oWorkhelper.vbproj`**：`ApplicationVersion` 保存 ClickOnce/VSTO 内部部署版本
 3. **Git 标签**：格式为 `v{版本号}`，例如 `v1.2.260713.1`
 
 ## 6. 签名
 
-- 清单签名使用临时证书 `iWorkhelper_TemporaryKey.pfx`
+- 清单签名使用临时证书 `oWorkhelper_TemporaryKey.pfx`
 - 私钥**不包含**在代码仓库中，生产部署时需使用正式的代码签名证书
-- 项目文件 `iWorkhelper.vbproj` 中的 `ManifestCertificateThumbprint` 属性指向当前使用的证书指纹
+- 项目文件 `oWorkhelper.vbproj` 中的 `ManifestCertificateThumbprint` 属性指向当前使用的证书指纹
 
 ## 7. 发布流程
 
-1. **更新版本号**：修改 `My Project/AssemblyInfo.vb` 中的三个版本特性，以及 `iWorkhelper.vbproj` 中的 `ApplicationVersion`，确保一致
+1. **更新版本号**：更新 `AssemblyInformationalVersion` 的展示版本；按发布日期计算 `DateBuild`，并同步更新 `AssemblyVersion`、`AssemblyFileVersion` 和 `oWorkhelper.vbproj` 中的 `ApplicationVersion`。展示版本与内部版本的日期字段表达不同，不应写成相同字符串
 2. **编译构建**：分别构建 `Release-Intranet` 和 `Release-Internet` 配置
 3. **运行自测**：执行 `OfflineTester --selftest`，验证核心识别与归档逻辑正常工作
 4. **提交与标签**：`git commit` 提交变更，`git tag v{版本号}` 创建标签，推送至远程仓库
