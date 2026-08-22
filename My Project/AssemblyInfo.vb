@@ -11,9 +11,9 @@ Imports System.Security
 
 <Assembly: AssemblyTitle("oWorkhelper")>
 <Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("Aptiv")>
+<Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("oWorkhelper")>
-<Assembly: AssemblyCopyright("Copyright © Aptiv 2026")>
+<Assembly: AssemblyCopyright("Copyright © 2026")>
 <Assembly: AssemblyTrademark("")>
 
 '将 ComVisible 设置为 false 将使此程序集中的类型

@@ -14,6 +14,7 @@
 
 - Debug、Release、Release-Intranet、Release-Internet 四套 VSTO 配置构建通过。
 - OfflineTester 内置自动化自测 93 项全部通过。
+- 发布程序集已移除公司及个人标识，安装包不包含 PDB、源码路径或本机配置。
 
 ## v1.2.260713.1（2026-07-13）
 
