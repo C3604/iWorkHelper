@@ -456,10 +456,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>iWorkhelper_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>oWorkhelper_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>E3F7B816E8FBA43302AE6FA2DD26A4359F80AA89</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>665A337EF8564F2D47E557FC7C6C8B861E6674DD</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
