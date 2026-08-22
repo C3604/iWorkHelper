@@ -6,7 +6,7 @@ Imports System.Xml.Linq
 ''' 配置来源优先级：
 '''  1) My.Settings（SettingsForm 设置界面写入）——主入口；
 '''  2) 若 My.Settings 中未填 AK/SK，则尝试兼容旧的外部 XML 文件
-'''     %AppData%\iWorkHelper\baidu-ocr.config.xml（历史遗留，可选）。
+'''     %AppData%\oWorkHelper\baidu-ocr.config.xml（历史遗留，可选）。
 ''' 任何异常都回退为禁用配置，不抛出。密钥不写入日志。
 ''' </summary>
 Public Module OcrConfigProvider

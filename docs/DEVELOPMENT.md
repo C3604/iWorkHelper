@@ -1,6 +1,6 @@
 # 开发指南
 
-> 本文面向 iWorkHelper 的开发者与维护者，涵盖开发环境、调试方法、测试工具和关键设计决策。
+> 本文面向 oWorkhelper 的开发者与维护者，涵盖开发环境、调试方法、测试工具和关键设计决策。
 
 ## 1. 开发环境搭建
 
@@ -11,7 +11,7 @@
 
 ## 2. 项目约定
 
-- `Option Strict Off`、`Option Explicit On`、`Option Infer On`（见 `iWorkhelper.vbproj`）。
+- `Option Strict Off`、`Option Explicit On`、`Option Infer On`（见 `oWorkhelper.vbproj`）。
 - 控件/成员命名采用 PascalCase 与 camelCase 混用（WinForms 惯例）。
 - UI 文本与注释使用中文。
 - `Core/` 业务代码不依赖 Outlook 或 `My.Settings`，因此 `OfflineTester` 可直接链接同一批源文件做离线测试。
@@ -115,5 +115,5 @@ OfflineTester.exe <pdf> --force-ocr --save-response ocr-raw
 ## 8. 诊断脚本
 
 `tools/OutlookResiliency/` 包含两个 PowerShell 诊断脚本：
-- `check_iworkhelper_addin_registration.ps1`：检查加载项注册状态。
-- `get_iworkhelper_details.ps1`：获取加载项详细信息。
+- `check_oworkhelper_addin_registration.ps1`：检查加载项注册状态。
+- `get_oworkhelper_details.ps1`：获取加载项详细信息。

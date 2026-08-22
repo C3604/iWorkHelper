@@ -66,7 +66,6 @@
         'ButtonArchive
         '
         Me.ButtonArchive.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.ButtonArchive.Image = Global.iWorkhelper.My.Resources.Resources.Archive
         Me.ButtonArchive.Label = "归档"
         Me.ButtonArchive.Name = "ButtonArchive"
         Me.ButtonArchive.ShowImage = True
@@ -74,7 +73,6 @@
         'ButtonSettings
         '
         Me.ButtonSettings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.ButtonSettings.Image = Global.iWorkhelper.My.Resources.Resources.Setting
         Me.ButtonSettings.Label = "设置"
         Me.ButtonSettings.Name = "ButtonSettings"
         Me.ButtonSettings.ShowImage = True

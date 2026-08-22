@@ -6,10 +6,12 @@ Imports System.IO
 ''' </summary>
 Public Module PathHelper
 
-    Public Const AppFolderName As String = "iWorkHelper"
+    Public Const AppFolderName As String = "oWorkHelper"
+    ' 升级兼容：仅用于读取旧版本已存在的数据，不作为新数据写入位置。
+    Public Const LegacyAppFolderName As String = "iWorkHelper"
 
     ''' <summary>
-    ''' 应用根数据目录：%AppData%\iWorkHelper。
+    ''' 应用根数据目录：%AppData%\oWorkHelper。
     ''' </summary>
     Public Function GetAppDataRoot() As String
         Dim appData As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
@@ -17,7 +19,15 @@ Public Module PathHelper
     End Function
 
     ''' <summary>
-    ''' 日志目录。若归档目录可用则优先使用归档目录下的 logs，否则用 AppData\iWorkHelper\logs。
+    ''' 旧版本应用数据目录；仅供兼容读取，禁止用于保存新配置。
+    ''' </summary>
+    Public Function GetLegacyAppDataRoot() As String
+        Dim appData As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+        Return Path.Combine(appData, LegacyAppFolderName)
+    End Function
+
+    ''' <summary>
+    ''' 日志目录。若归档目录可用则优先使用归档目录下的 logs，否则用 AppData\oWorkHelper\logs。
     ''' </summary>
     Public Function GetLogDirectory(Optional archiveFolder As String = Nothing) As String
         Dim baseDir As String
@@ -33,7 +43,7 @@ Public Module PathHelper
     End Function
 
     ''' <summary>
-    ''' 临时工作目录：%AppData%\iWorkHelper\temp。用于暂存导出的 PDF 附件。
+    ''' 临时工作目录：%AppData%\oWorkHelper\temp。用于暂存导出的 PDF 附件。
     ''' </summary>
     Public Function GetTempWorkDirectory() As String
         Dim tempDir As String = Path.Combine(GetAppDataRoot(), "temp")

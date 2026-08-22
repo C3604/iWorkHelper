@@ -1,4 +1,4 @@
-<Project ToolsVersion="17.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="17.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!--
     This section defines project-level properties.
@@ -23,44 +23,35 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6F3776D9-6688-4936-8507-820C9B6FDF3D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>iWorkhelper</RootNamespace>
-    <AssemblyName>iWorkhelper</AssemblyName>
+    <RootNamespace>oWorkHelper</RootNamespace>
+    <AssemblyName>oWorkhelper</AssemblyName>
+    <LoadBehavior>3</LoadBehavior>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <DefineConstants>VSTO40,UseOfficeInterop</DefineConstants>
     <StartupObject>
     </StartupObject>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>HomeSite</BootstrapperComponentsLocation>
     <ResolveComReferenceSilent>true</ResolveComReferenceSilent>
     <IsWebBootstrapper>False</IsWebBootstrapper>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
     <PublishUrl>publish\</PublishUrl>
     <InstallUrl />
     <TargetCulture>zh-chs</TargetCulture>
-    <ApplicationVersion>1.2.260713.1</ApplicationVersion>
+    <ApplicationVersion>1.2.260822.1</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
-    <ProductName>iWorkhelper</ProductName>
+    <ProductName>oWorkhelper</ProductName>
     <PublisherName />
     <SupportUrl />
-    <FriendlyName>iWorkhelper</FriendlyName>
+    <FriendlyName>oWorkhelper</FriendlyName>
     <OfficeApplicationDescription />
-    <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.8 %28x86 和 x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 和 x64%29</ProductName>
+      <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
@@ -98,7 +89,7 @@
     <DebugSymbols>true</DebugSymbols>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>iWorkhelper.xml</DocumentationFile>
+    <DocumentationFile>oWorkhelper.xml</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
@@ -127,14 +118,12 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>iWorkhelper.xml</DocumentationFile>
+    <DocumentationFile>oWorkhelper.xml</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
-  <!--
-    Release-Intranet: 内网版本，禁用在线解析
-  -->
+  <!-- Release-Intranet: 内网版本，禁用在线解析 -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Intranet|AnyCPU' ">
     <DefineConstants>INTRANET_BUILD</DefineConstants>
     <DefineDebug>false</DefineDebug>
@@ -142,14 +131,12 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release-Intranet\</OutputPath>
-    <DocumentationFile>iWorkhelper.xml</DocumentationFile>
+    <DocumentationFile>oWorkhelper.xml</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
-  <!--
-    Release-Internet: 外网版本，启用在线解析
-  -->
+  <!-- Release-Internet: 外网版本，启用在线解析 -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Internet|AnyCPU' ">
     <DefineConstants>INTERNET_BUILD</DefineConstants>
     <DefineDebug>false</DefineDebug>
@@ -157,7 +144,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release-Internet\</OutputPath>
-    <DocumentationFile>iWorkhelper.xml</DocumentationFile>
+    <DocumentationFile>oWorkhelper.xml</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
@@ -175,7 +162,6 @@
       <HintPath>packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.6.0\lib\net462\System.Memory.dll</HintPath>
@@ -188,8 +174,6 @@
       <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -317,21 +301,13 @@
     <Compile Include="SettingsForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProgressForm.Designer.vb">
-      <DependentUpon>ProgressForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ProgressForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ThisAddIn.vb">
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Include="ProgressForm.resx">
-      <DependentUpon>ProgressForm.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.vb</DependentUpon>
     </EmbeddedResource>
+    <None Include="oWorkhelper_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="ThisAddIn.Designer.xml">
       <DependentUpon>ThisAddIn.vb</DependentUpon>
@@ -364,91 +340,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <!-- 第二阶段：最小可用链路核心模块 -->
   <ItemGroup>
-    <Compile Include="Core\Common\Result.vb" />
-    <Compile Include="Core\Common\PathHelper.vb" />
-    <Compile Include="Core\Common\FileNameSanitizer.vb" />
-    <Compile Include="Core\Common\PrivacySafeFormatter.vb" />
-    <Compile Include="Core\Common\ExceptionFormatter.vb" />
-    <Compile Include="Core\Common\ErrorSeverity.vb" />
-    <Compile Include="Core\Common\AppErrorCode.vb" />
-    <Compile Include="Core\Common\AppError.vb" />
-    <Compile Include="Core\Common\UserFriendlyMessageProvider.vb" />
-    <Compile Include="Core\Common\BuildFeatures.vb" />
-    <Compile Include="Core\Common\ExplorerFolderService.vb" />
-    <Compile Include="Core\Logging\AppLogger.vb" />
-    <Compile Include="Core\Diagnostics\StartupPerformanceTracker.vb" />
-    <Compile Include="Core\Configuration\BaiduOcrOptions.vb" />
-    <Compile Include="Core\Configuration\BaiduXmlConfigStore.vb" />
-    <Compile Include="Core\Configuration\OcrConfigProvider.vb" />
-    <Compile Include="Core\Invoice\InvoiceFieldNames.vb" />
-    <Compile Include="Core\Invoice\InvoiceTripInfo.vb" />
-    <Compile Include="Core\Invoice\InvoiceLineItem.vb" />
-    <Compile Include="Core\Invoice\InvoiceInfo.vb" />
-    <Compile Include="Core\Pdf\PdfTextExtractResult.vb" />
-    <Compile Include="Core\Pdf\PdfTextLine.vb" />
-    <Compile Include="Core\Pdf\PdfTextBlock.vb" />
-    <Compile Include="Core\Pdf\PdfTextLayoutExtractor.vb" />
-    <Compile Include="Core\Pdf\PdfTableRegionDetector.vb" />
-    <Compile Include="Core\Pdf\PdfTextExtractor.vb" />
-    <Compile Include="Core\Pdf\PdfMergeService.vb" />
-    <Compile Include="Core\Recognition\InvoiceDocumentType.vb" />
-    <Compile Include="Core\Recognition\InvoiceField.vb" />
-    <Compile Include="Core\Recognition\InvoiceRecognitionResult.vb" />
-    <Compile Include="Core\Recognition\RecognitionContext.vb" />
-    <Compile Include="Core\Recognition\IInvoiceRecognizer.vb" />
-    <Compile Include="Core\Recognition\LocalTextNormalizer.vb" />
-    <Compile Include="Core\Recognition\LocalTextInvoiceRecognizer.vb" />
-    <Compile Include="Core\Recognition\BaiduOcrInvoiceRecognizer.vb" />
-    <Compile Include="Core\Recognition\RecognitionPipeline.vb" />
-    <Compile Include="Core\Recognition\KeyFieldEvaluator.vb" />
-    <Compile Include="Core\Recognition\GeneralInvoiceFieldCandidate.vb" />
-    <Compile Include="Core\Recognition\GeneralInvoiceParseResult.vb" />
-    <Compile Include="Core\Recognition\GeneralInvoiceCandidateScorer.vb" />
-    <Compile Include="Core\Recognition\GeneralInvoiceLineItemParser.vb" />
-    <Compile Include="Core\Recognition\GeneralInvoiceLocalRecognizer.vb" />
-    <Compile Include="Core\Ocr\Baidu\BaiduAccessTokenResult.vb" />
-    <Compile Include="Core\Ocr\Baidu\BaiduAccessTokenProvider.vb" />
-    <Compile Include="Core\Ocr\Baidu\BaiduOcrRawResponse.vb" />
-    <Compile Include="Core\Ocr\Baidu\BaiduOcrHttpClient.vb" />
-    <Compile Include="Core\Ocr\Baidu\BaiduInvoiceTypeMapper.vb" />
-    <Compile Include="Core\Ocr\Baidu\BaiduMultipleInvoiceResponseParser.vb" />
-    <Compile Include="Core\Ocr\Baidu\BaiduInvoiceFieldMapper.vb" />
-    <Compile Include="Core\Mail\MailAttachmentItem.vb" />
-    <Compile Include="Core\Mail\MailReadResult.vb" />
-    <Compile Include="Core\Mail\MailPdfGroup.vb" />
-    <Compile Include="Core\Mail\MailPdfGroupingResult.vb" />
-    <Compile Include="Core\Mail\MailAttachmentReader.vb" />
-    <Compile Include="Core\Recognition\InvoiceRecognitionMerger.vb" />
-    <Compile Include="Core\Archive\ArchiveNamingRule.vb" />
-    <Compile Include="Core\Archive\UnknownPdfNamingRule.vb" />
-    <Compile Include="Core\Archive\NamingTemplates.vb" />
-    <Compile Include="Core\Archive\NamingTemplateEngine.vb" />
-    <Compile Include="Core\Archive\ArchiveResult.vb" />
-    <Compile Include="Core\Archive\ArchivePlanner.vb" />
-    <Compile Include="Core\Archive\ArchiveExecutor.vb" />
-    <Compile Include="Core\Archive\ArchiveReportWriter.vb" />
-    <Compile Include="Core\Security\SecretProtector.vb" />
-    <Compile Include="Core\Security\ProtectedSettingsProvider.vb" />
-    <Compile Include="Core\Workflow\ArchiveProgressInfo.vb" />
-    <Compile Include="Core\Workflow\IArchiveProgressReporter.vb" />
-    <Compile Include="Core\Workflow\UiArchiveProgressReporter.vb" />
-    <Compile Include="Core\Workflow\ArchivePreflightIssue.vb" />
-    <Compile Include="Core\Workflow\ArchivePreflightResult.vb" />
-    <Compile Include="Core\Workflow\ArchivePreflightChecker.vb" />
-    <Compile Include="Core\Workflow\ArchiveRunGuard.vb" />
-    <Compile Include="Core\Workflow\ArchiveRunToken.vb" />
-    <Compile Include="Core\Workflow\MailProcessingType.vb" />
-    <Compile Include="Core\Workflow\PdfAttachmentClassificationResult.vb" />
-    <Compile Include="Core\Workflow\MailProcessingClassifier.vb" />
-    <Compile Include="Core\Workflow\BatchArchiveWorkflow.vb" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Setting.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Archive.png" />
+    <Folder Include="Core\Local OCR\" />
+    <Folder Include="Core\Online OCR\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -467,13 +361,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>iWorkhelper_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>oWorkhelper_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>E3F7B816E8FBA43302AE6FA2DD26A4359F80AA89</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <!-- Include the build rules for a Visual Basic project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
@@ -484,8 +375,8 @@
     <VisualStudio>
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
         <ProjectProperties HostName="Outlook" HostPackage="{29A7B9D7-A7F1-4328-8EF0-6B2D1A56B2C1}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="Outlook" Language="vb" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\16.0\Outlook\InstallRoot\Path#outlook.exe" AddItemTemplatesGuid="{5D898164-AEB5-470F-97BA-9253F022FD71}" />
-        <Host Name="Outlook" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
-          <HostItem Name="ThisAddIn" Code="ThisAddIn.vb" CanonicalName="AddIn" PublishedHash="341B421006973DA6ECFF9E7771C273C5532C588D" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.vb" />
+        <Host Name="Outlook" IconIndex="0">
+          <HostItem Name="ThisAddIn" Code="ThisAddIn.vb" CanonicalName="AddIn" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.vb" />
         </Host>
       </FlavorProperties>
     </VisualStudio>

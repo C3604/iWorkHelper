@@ -67,7 +67,7 @@ Public Module UserFriendlyMessageProvider
             Case AppErrorCode.LogWriteFailed
                 e = Make(ErrorSeverity.Warning, "日志写入失败（不影响归档）。", "可检查日志目录权限。")
             Case AppErrorCode.TempDirNotWritable
-                e = Make(ErrorSeverity.Critical, "临时工作目录不可写。", "请检查 %AppData%\iWorkHelper\temp 目录权限。")
+                e = Make(ErrorSeverity.Critical, "临时工作目录不可写。", "请检查 %AppData%\oWorkHelper\temp 目录权限。")
             Case AppErrorCode.LogDirNotWritable
                 e = Make(ErrorSeverity.Warning, "日志目录不可写（不影响归档）。", "可检查日志目录权限。")
             Case AppErrorCode.ArchiveAlreadyRunning

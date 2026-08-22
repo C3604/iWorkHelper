@@ -10,56 +10,5 @@
     <Setting Name="ParseMode" Type="System.String" Scope="User">
       <Value Profile="(Default)">Local</Value>
     </Setting>
-    <Setting Name="OcrEnabled" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="BaiduApiKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="BaiduSecretKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="BaiduOcrApiUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://aip.baidubce.com/rest/2.0/ocr/v1/multiple_invoice</Value>
-    </Setting>
-    <Setting Name="BaiduTokenUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://aip.baidubce.com/oauth/2.0/token</Value>
-    </Setting>
-    <Setting Name="OcrTimeoutMs" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">30000</Value>
-    </Setting>
-    <Setting Name="OcrReturnProbability" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="OcrReturnLocation" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="OcrVerifyParameter" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="OcrMaxPages" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
-    </Setting>
-    <Setting Name="PreferLocalParse" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="AutoFallbackToOcr" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="InvoiceNameTemplate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">{开票日期}_{销售方名称}_{发票号码}_{价税合计}</Value>
-    </Setting>
-    <Setting Name="TripNameTemplate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">{出发日期}_{乘车人}_{起点}-{终点}_{订单号}_{行程金额}</Value>
-    </Setting>
-    <Setting Name="UnknownNameTemplate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">{原始文件名}</Value>
-    </Setting>
-    <Setting Name="UnifiedNameTemplate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">{乘车日期}_{金额}_{出发地点}_{到达地点}</Value>
-    </Setting>
-    <Setting Name="GeneralInvoiceNameTemplate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">{开票日期}_{金额}_{销售方名称}</Value>
-    </Setting>
   </Settings>
 </SettingsFile>
