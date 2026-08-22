@@ -9,10 +9,10 @@ Imports System.Security
 
 '查看程序集特性的值
 
-<Assembly: AssemblyTitle("iWorkhelper")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("iWorkhelper")>
-<Assembly: AssemblyProduct("iWorkhelper")>
+<Assembly: AssemblyTitle("oWorkhelper")>
+<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyCompany("oWorkhelper")>
+<Assembly: AssemblyProduct("oWorkhelper")>
 <Assembly: AssemblyCopyright("Copyright © 2026")>
 <Assembly: AssemblyTrademark("")> 
 
@@ -35,9 +35,9 @@ Imports System.Security
 ' 方法是按如下所示使用“*”: :
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.2.0.1")>
-<Assembly: AssemblyFileVersion("1.2.0.1")>
-<Assembly: AssemblyInformationalVersion("1.2.260713.1")> 
+<Assembly: AssemblyVersion("1.2.9730.3")>
+<Assembly: AssemblyFileVersion("1.2.9730.3")>
+<Assembly: AssemblyInformationalVersion("1.2.260822.3")>
 
 Friend Module DesignTimeConstants
     Public Const RibbonTypeSerializer As String = "Microsoft.VisualStudio.Tools.Office.Ribbon.Serialization.RibbonTypeCodeDomSerializer, Microsoft.VisualStudio.Tools.Office.Designer, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"

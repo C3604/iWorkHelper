@@ -2,7 +2,9 @@
 
 Outlook VSTO 加载项，用于批量处理邮件中的 PDF 附件（发票、行程单），完成自动识别、合并、命名和归档。
 
-**当前版本**：`v1.2.260713.1`
+**当前版本**：`v1.2.260822.3`
+
+下载：[GitHub Releases](https://github.com/C3604/oWorkHelper/releases/latest)
 
 ## 主要功能
 
@@ -41,7 +43,7 @@ Outlook VSTO 加载项，用于批量处理邮件中的 PDF 附件（发票、�
 ## 项目目录结构
 
 ```
-iWorkhelper/
+oWorkhelper/
 ├── Core/                     # 业务核心
 │   ├── Archive/              # 命名规则、模板引擎、归档规划与执行
 │   ├── Common/               # 结果对象、路径工具、错误处理、编译期开关
@@ -61,8 +63,8 @@ iWorkhelper/
 ├── tools/
 │   ├── OfflineTester/        # 离线测试控制台工具
 │   └── OutlookResiliency/    # 加载项诊断脚本
-├── iWorkhelper.sln           # 解决方案
-├── iWorkhelper.vbproj        # 主工程文件
+├── oWorkhelper.sln           # 解决方案
+├── oWorkhelper.vbproj        # 主工程文件
 ├── MainRibbon.vb             # 功能区（归档/设置按钮）
 ├── SettingsForm.vb           # 设置窗体
 ├── ProgressForm.vb           # 进度窗口
@@ -107,10 +109,10 @@ iWorkhelper/
 
 ```bash
 # 内网版
-MSBuild iWorkhelper.sln /p:Configuration="Release-Intranet" /p:Platform="Any CPU"
+MSBuild oWorkhelper.sln /p:Configuration="Release-Intranet" /p:Platform="Any CPU"
 
 # 外网版
-MSBuild iWorkhelper.sln /p:Configuration="Release-Internet" /p:Platform="Any CPU"
+MSBuild oWorkhelper.sln /p:Configuration="Release-Internet" /p:Platform="Any CPU"
 
 # OfflineTester（调试工具）
 MSBuild tools\OfflineTester\OfflineTester.vbproj /t:Build /p:Configuration=Debug /p:Platform=AnyCPU
@@ -120,7 +122,7 @@ MSBuild tools\OfflineTester\OfflineTester.vbproj /t:Build /p:Configuration=Debug
 
 VSTO 加载项通过 ClickOnce 发布或手动注册安装到 Outlook。加载行为设置为 `LoadBehavior=3`（随 Outlook 自动加载）。
 
-签名使用临时证书 `iWorkhelper_TemporaryKey.pfx`，正式部署需替换为正式代码签名证书。
+签名使用本地临时证书，证书文件由 `.gitignore` 排除；正式部署应替换为受信任的代码签名证书。
 
 ## 基本使用方法
 
@@ -185,7 +187,7 @@ VSTO 加载项通过 ClickOnce 发布或手动注册安装到 Outlook。加载�
 - `yyMMdd`：发布日期
 - `d`：修订次数
 
-例：`1.2.260713.1` 表示 2026 年 7 月 13 日的第 1 次发布。
+例：`1.2.260822.3` 表示 2026 年 8 月 22 日的第 3 次发布。
 
 ## 文档入口
 

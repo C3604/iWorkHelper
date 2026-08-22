@@ -404,66 +404,18 @@ Public Class SettingsForm
 
     End Sub
 
-    ''' <summary>获取应用版本号，优先级：ClickOnce发布版本 > InformationalVersion > FileVersion > AssemblyVersion。</summary>
+    ''' <summary>获取用户展示版本，优先读取 InformationalVersion。</summary>
     Private Function GetApplicationVersion() As String
         Try
-            ' 第一优先级：ClickOnce/VSTO 发布版本（正式部署安装时有效）
-            If ApplicationDeployment.IsNetworkDeployed Then
-                Try
-                    Dim ver = ApplicationDeployment.CurrentDeployment.CurrentVersion
-                    If ver IsNot Nothing Then
-                        Dim version = String.Format("{0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision)
-                        AppLogger.Debug("使用 ClickOnce 发布版本：" & version)
-                        Return version
-                    End If
-                Catch ex As Exception
-                    AppLogger.Debug("读取 ClickOnce 版本失败：" & ex.Message)
-                End Try
+            Dim asm = Assembly.GetExecutingAssembly()
+            Dim attr = CType(Attribute.GetCustomAttribute(asm, GetType(AssemblyInformationalVersionAttribute)), AssemblyInformationalVersionAttribute)
+            If attr IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(attr.InformationalVersion) Then
+                Return attr.InformationalVersion
             End If
 
-            ' 第二优先级：AssemblyInformationalVersion（字符串格式，支持完整四段）
-            Try
-                Dim asm = Assembly.GetExecutingAssembly()
-                Dim infoAttr = CType(Attribute.GetCustomAttribute(asm, GetType(AssemblyInformationalVersionAttribute)), AssemblyInformationalVersionAttribute)
-                If infoAttr IsNot Nothing AndAlso Not String.IsNullOrEmpty(infoAttr.InformationalVersion) Then
-                    AppLogger.Debug("使用 AssemblyInformationalVersion：" & infoAttr.InformationalVersion)
-                    Return infoAttr.InformationalVersion
-                End If
-            Catch ex As Exception
-                AppLogger.Debug("读取 InformationalVersion 失败：" & ex.Message)
-            End Try
-
-            ' 第三优先级：AssemblyFileVersion
-            Try
-                Dim asm = Assembly.GetExecutingAssembly()
-                Dim fileAttr = CType(Attribute.GetCustomAttribute(asm, GetType(AssemblyFileVersionAttribute)), AssemblyFileVersionAttribute)
-                If fileAttr IsNot Nothing AndAlso Not String.IsNullOrEmpty(fileAttr.Version) Then
-                    AppLogger.Debug("使用 AssemblyFileVersion：" & fileAttr.Version)
-                    Return fileAttr.Version
-                End If
-            Catch ex As Exception
-                AppLogger.Debug("读取 FileVersion 失败：" & ex.Message)
-            End Try
-
-            ' 第四优先级：AssemblyVersion（程序集版本）
-            Try
-                Dim asm = Assembly.GetExecutingAssembly()
-                Dim ver = asm.GetName().Version
-                If ver IsNot Nothing Then
-                    Dim version = String.Format("{0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision)
-                    AppLogger.Debug("使用 AssemblyVersion：" & version)
-                    Return version
-                End If
-            Catch ex As Exception
-                AppLogger.Debug("读取 AssemblyVersion 失败：" & ex.Message)
-            End Try
-
-            ' 第五优先级：未知
-            AppLogger.Warn("无法读取任何有效版本号")
-            Return "未知"
-
-        Catch ex As Exception
-            AppLogger.Warn("获取应用版本号异常：" & ex.Message)
+            Dim version = asm.GetName().Version
+            Return If(version Is Nothing, "未知", version.ToString())
+        Catch
             Return "未知"
         End Try
     End Function

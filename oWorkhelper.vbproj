@@ -24,7 +24,7 @@
     <ProjectGuid>{6F3776D9-6688-4936-8507-820C9B6FDF3D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>iWorkhelper</RootNamespace>
-    <AssemblyName>iWorkhelper</AssemblyName>
+    <AssemblyName>oWorkhelper</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <DefineConstants>VSTO40,UseOfficeInterop</DefineConstants>
     <StartupObject>
@@ -35,15 +35,17 @@
     <PublishUrl>publish\</PublishUrl>
     <InstallUrl />
     <TargetCulture>zh-chs</TargetCulture>
-    <ApplicationVersion>1.2.260713.1</ApplicationVersion>
-    <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
+    <!-- ClickOnce/VSTO requires every version component to be <= 65535. -->
+    <!-- 9730 is the number of days from 2000-01-01 to 2026-08-22. -->
+    <ApplicationVersion>1.2.9730.3</ApplicationVersion>
+    <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
-    <ProductName>iWorkhelper</ProductName>
+    <ProductName>oWorkhelper</ProductName>
     <PublisherName />
     <SupportUrl />
-    <FriendlyName>iWorkhelper</FriendlyName>
+    <FriendlyName>oWorkhelper</FriendlyName>
     <OfficeApplicationDescription />
     <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
@@ -98,7 +100,7 @@
     <DebugSymbols>true</DebugSymbols>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>iWorkhelper.xml</DocumentationFile>
+    <DocumentationFile>oWorkhelper.xml</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
@@ -119,19 +121,6 @@
     WarningLevel
       Warning level for the compiler.
   -->
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DefineConstants>
-    </DefineConstants>
-    <DefineDebug>false</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>iWorkhelper.xml</DocumentationFile>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>false</RemoveIntegerChecks>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-  </PropertyGroup>
   <!--
     Release-Intranet: 内网版本，禁用在线解析
   -->
@@ -142,7 +131,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release-Intranet\</OutputPath>
-    <DocumentationFile>iWorkhelper.xml</DocumentationFile>
+    <DocumentationFile>oWorkhelper.xml</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
@@ -157,7 +146,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release-Internet\</OutputPath>
-    <DocumentationFile>iWorkhelper.xml</DocumentationFile>
+    <DocumentationFile>oWorkhelper.xml</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>

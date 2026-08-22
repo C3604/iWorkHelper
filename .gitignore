@@ -9,6 +9,7 @@
 *.vsidx
 
 # 构建与发布输出
+[Aa]rtifacts/
 [Bb]in/
 [Oo]bj/
 [Dd]ebug/
