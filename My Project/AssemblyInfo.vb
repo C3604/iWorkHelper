@@ -9,12 +9,18 @@ Imports System.Security
 
 '查看程序集特性的值
 
+<<<<<<< HEAD
 <Assembly: AssemblyTitle("oWorkhelper")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("oWorkhelper")>
+=======
+<Assembly: AssemblyTitle("oWorkhelper")>
+<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyCompany("")>
+>>>>>>> 1b5cb2d7788e08ddb78646384ca7b0118c66dc37
 <Assembly: AssemblyProduct("oWorkhelper")>
 <Assembly: AssemblyCopyright("Copyright © 2026")>
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTrademark("")>
 
 '将 ComVisible 设置为 false 将使此程序集中的类型
 '对 COM 组件不可见。  如果需要从 COM 访问此程序集中的类型，
@@ -22,7 +28,7 @@ Imports System.Security
 <Assembly: ComVisible(False)>
 
 '如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-<Assembly: Guid("100c33f6-c414-426d-82e6-a193c2786eef")> 
+<Assembly: Guid("100c33f6-c414-426d-82e6-a193c2786eef")>
 
 ' 程序集的版本信息由下列四个值组成:
 '
@@ -35,11 +41,17 @@ Imports System.Security
 ' 方法是按如下所示使用“*”: :
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
+<<<<<<< HEAD
 ' 数值版本供 CLR 与 VSTO 使用；9690 = 2026-07-13 距 2000-01-01 的天数。
 <Assembly: AssemblyVersion("1.2.9690.1")>
 <Assembly: AssemblyFileVersion("1.2.9690.1")>
 ' 用户展示版本保留 a.b.YYMMDD.revision 语义，不用于 ClickOnce manifest。
 <Assembly: AssemblyInformationalVersion("1.2.260713.1")> 
+=======
+<Assembly: AssemblyVersion("1.2.0.2")>
+<Assembly: AssemblyFileVersion("1.2.0.2")>
+<Assembly: AssemblyInformationalVersion("1.2.260822.1")>
+>>>>>>> 1b5cb2d7788e08ddb78646384ca7b0118c66dc37
 
 Friend Module DesignTimeConstants
     Public Const RibbonTypeSerializer As String = "Microsoft.VisualStudio.Tools.Office.Ribbon.Serialization.RibbonTypeCodeDomSerializer, Microsoft.VisualStudio.Tools.Office.Designer, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"

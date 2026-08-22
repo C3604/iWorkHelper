@@ -1,6 +1,6 @@
 # 配置指南
 
-本文档说明 iWorkHelper 的所有可配置项、存储位置及安全注意事项。
+本文档说明 oWorkhelper 的所有可配置项、存储位置及安全注意事项。
 
 ---
 
@@ -84,7 +84,9 @@
 ### 文件位置
 
 ```
-%AppData%\iWorkHelper\baidu-ocr.config.xml
+%AppData%\oWorkHelper\baidu-ocr.config.xml
+
+升级兼容：若新路径中尚无配置，程序会只读回退旧版本的同名配置文件；任何后续保存均写入上述新路径。
 ```
 
 ### 说明
@@ -194,7 +196,7 @@ OfflineTester --save-baidu-config
 当归档目录不可用时，自动回退到备用位置：
 
 ```
-%AppData%\iWorkHelper\logs\yyyy-MM-dd.log
+%AppData%\oWorkHelper\logs\yyyy-MM-dd.log
 ```
 
 ### 归档报告

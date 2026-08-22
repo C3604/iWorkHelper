@@ -1,4 +1,4 @@
-# iWorkHelper 构建与发布指南
+# oWorkhelper 构建与发布指南
 
 ## 1. 环境要求
 
@@ -12,14 +12,14 @@
 
 | 路径 | 说明 |
 |------|------|
-| `iWorkhelper.sln` | 主解决方案文件 |
-| `iWorkhelper.vbproj` | VSTO Outlook 外接程序项目（VB.NET） |
+| `oWorkhelper.sln` | 主解决方案文件 |
+| `oWorkhelper.vbproj` | VSTO Outlook 外接程序项目（VB.NET） |
 | `tools/OfflineTester/OfflineTester.vbproj` | 离线测试控制台应用，用于脱离 Outlook 验证核心逻辑 |
 | `packages.config` | NuGet 依赖清单（PdfPig 0.1.14 及其传递依赖） |
 
 ## 3. 编译配置
 
-解决方案 `iWorkhelper.sln` 包含四种编译配置：
+解决方案 `oWorkhelper.sln` 包含四种编译配置：
 
 | 配置名称 | 编译常量 | 输出路径 | 在线 OCR |
 |----------|----------|----------|----------|
@@ -37,13 +37,13 @@
 内网版本：
 
 ```batch
-MSBuild iWorkhelper.sln /p:Configuration=Release-Intranet /p:Platform=AnyCPU /restore
+MSBuild oWorkhelper.sln /p:Configuration=Release-Intranet /p:Platform=AnyCPU /restore
 ```
 
 外网版本（启用在线 OCR）：
 
 ```batch
-MSBuild iWorkhelper.sln /p:Configuration=Release-Internet /p:Platform=AnyCPU /restore
+MSBuild oWorkhelper.sln /p:Configuration=Release-Internet /p:Platform=AnyCPU /restore
 ```
 
 ### 构建离线测试工具
@@ -75,8 +75,13 @@ VSTO / ClickOnce 部署版本与展示版本解耦，格式为
 
 以下三处必须按同一次发布同步维护：
 
+<<<<<<< HEAD
 1. **`My Project/AssemblyInfo.vb`**：`AssemblyInformationalVersion` 保存用户展示版本；`AssemblyVersion` 和 `AssemblyFileVersion` 使用合法的数值版本
 2. **`oWorkhelper.vbproj`**：`ApplicationVersion` 保存 ClickOnce/VSTO 内部部署版本
+=======
+1. **`My Project/AssemblyInfo.vb`**：`AssemblyVersion`、`AssemblyFileVersion`、`AssemblyInformationalVersion` 三个特性
+2. **`oWorkhelper.vbproj`**：`ApplicationVersion` 属性（ClickOnce 发布版本号）
+>>>>>>> 1b5cb2d7788e08ddb78646384ca7b0118c66dc37
 3. **Git 标签**：格式为 `v{版本号}`，例如 `v1.2.260713.1`
 
 ## 6. 签名
@@ -87,7 +92,11 @@ VSTO / ClickOnce 部署版本与展示版本解耦，格式为
 
 ## 7. 发布流程
 
+<<<<<<< HEAD
 1. **更新版本号**：更新 `AssemblyInformationalVersion` 的展示版本；按发布日期计算 `DateBuild`，并同步更新 `AssemblyVersion`、`AssemblyFileVersion` 和 `oWorkhelper.vbproj` 中的 `ApplicationVersion`。展示版本与内部版本的日期字段表达不同，不应写成相同字符串
+=======
+1. **更新版本号**：修改 `My Project/AssemblyInfo.vb` 中的三个版本特性，以及 `oWorkhelper.vbproj` 中的 `ApplicationVersion`。日期型正式版本写入 `AssemblyInformationalVersion` 与 `ApplicationVersion`；受 CLR 四段版本上限约束，`AssemblyVersion` 与 `AssemblyFileVersion` 使用对应的兼容递增版本
+>>>>>>> 1b5cb2d7788e08ddb78646384ca7b0118c66dc37
 2. **编译构建**：分别构建 `Release-Intranet` 和 `Release-Internet` 配置
 3. **运行自测**：执行 `OfflineTester --selftest`，验证核心识别与归档逻辑正常工作
 4. **提交与标签**：`git commit` 提交变更，`git tag v{版本号}` 创建标签，推送至远程仓库

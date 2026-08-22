@@ -13,7 +13,7 @@ End Enum
 
 ''' <summary>
 ''' 轻量级本地文件日志。要求：
-'''  - 所有核心流程可调用，写入本地文本文件（默认 %AppData%\iWorkHelper\logs\yyyy-MM-dd.log）；
+'''  - 所有核心流程可调用，写入本地文本文件（默认 %AppData%\oWorkHelper\logs\yyyy-MM-dd.log）；
 '''  - 任何写日志失败都不得导致主流程崩溃（内部全部吞掉异常）。
 ''' 非高并发场景，使用简单锁保证线程安全。
 ''' </summary>

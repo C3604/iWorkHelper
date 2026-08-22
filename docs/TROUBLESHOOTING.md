@@ -13,18 +13,18 @@
 
 1. Outlook → 文件 → 选项 → 加载项
 2. 底部"管理"下拉选"已禁用项目" → 转到
-3. 选择 iWorkHelper → 启用
+3. 选择 oWorkhelper → 启用
 4. 重启 Outlook
 
-也可通过注册表恢复：打开 `HKCU\Software\Microsoft\Office\16.0\Outlook\Resiliency\DisabledItems`，删除包含 iWorkHelper 的条目。
+也可通过注册表恢复：打开 `HKCU\Software\Microsoft\Office\16.0\Outlook\Resiliency\DisabledItems`，删除包含 oWorkhelper 的条目。
 
 ### 启动性能
 
 - `ThisAddIn.Startup` 已优化为轻量初始化（仅初始化性能跟踪器）
 - `StartupPerformanceTracker` 记录各阶段耗时到日志
 - 诊断脚本位于 `tools/OutlookResiliency/` 目录：
-  - `check_iworkhelper_addin_registration.ps1` — 检查加载项注册状态
-  - `get_iworkhelper_details.ps1` — 获取加载项详细信息
+  - `check_oworkhelper_addin_registration.ps1` — 检查加载项注册状态
+  - `get_oworkhelper_details.ps1` — 获取加载项详细信息
 
 ## 2. 配置问题
 
@@ -83,7 +83,7 @@ OfflineTester.exe --dump-local-debug              # 转储本地解析诊断
 
 ## 6. 日志与报告位置
 
-- 日志：`{归档目录}\logs\yyyy-MM-dd.log` 或 `%AppData%\iWorkHelper\logs\`
+- 日志：`{归档目录}\logs\yyyy-MM-dd.log` 或 `%AppData%\oWorkHelper\logs\`
 - 报告：同目录 `archive-report-yyyyMMdd-HHmmss.txt`
 - 汇总弹窗显示报告路径和日志路径
 - 日志不含AK/SK/token

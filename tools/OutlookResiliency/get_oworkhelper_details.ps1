@@ -1,8 +1,8 @@
-# Get detailed iWorkHelper registry information
-$regPath = "HKCU:\Software\Microsoft\Office\16.0\Outlook\Addins\iWorkHelper"
+# Get detailed oWorkhelper registry information
+$regPath = "HKCU:\Software\Microsoft\Office\16.0\Outlook\Addins\oWorkHelper"
 
 Write-Host "=========================================="
-Write-Host "iWorkHelper Registry Details"
+Write-Host "oWorkhelper Registry Details"
 Write-Host "=========================================="
 Write-Host ""
 
@@ -50,7 +50,7 @@ if (Test-Path -Path $regPath) {
     }
 
 } else {
-    Write-Host "iWorkHelper not found in HKCU\Software\Microsoft\Office\16.0\Outlook\Addins"
+    Write-Host "oWorkhelper not found in HKCU\Software\Microsoft\Office\16.0\Outlook\Addins"
 }
 
 Write-Host ""
@@ -64,14 +64,14 @@ if (Test-Path -Path $disabledPath) {
     $disabled = Get-ItemProperty -Path $disabledPath
     $foundDisabled = $false
     foreach ($prop in $disabled.PSObject.Properties) {
-        if ($prop.Value -match "iWorkHelper") {
+        if ($prop.Value -match "oWorkHelper") {
             Write-Host "FOUND IN DISABLED ITEMS:"
             Write-Host "  $($prop.Name) = $($prop.Value)"
             $foundDisabled = $true
         }
     }
     if (-not $foundDisabled) {
-        Write-Host "iWorkHelper NOT in DisabledItems (good sign)"
+        Write-Host "oWorkhelper NOT in DisabledItems (good sign)"
     }
 } else {
     Write-Host "DisabledItems registry not found (first run?)"

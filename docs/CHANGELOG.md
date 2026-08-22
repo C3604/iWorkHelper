@@ -1,5 +1,21 @@
 # 变更日志
 
+## v1.2.260822.1（2026-08-22）
+
+### 项目标识重构
+
+- 将项目从 iWorkhelper 全面重命名为 oWorkhelper。
+- Solution、Project、Assembly、Root Namespace、VSTO 产品名及发布清单同步更新。
+- Ribbon、设置、资源、诊断工具、离线测试工具及开发文档统一使用新名称。
+- 保留原 Project、Solution、COM 与 VSTO GUID，避免无意义破坏注册兼容性。
+- 新配置写入 `%AppData%\oWorkHelper`，并为旧版 OCR 配置提供只读兼容回退。
+
+### 验证
+
+- Debug、Release、Release-Intranet、Release-Internet 四套 VSTO 配置构建通过。
+- OfflineTester 内置自动化自测 93 项全部通过。
+- 发布程序集已移除公司及个人标识，安装包不包含 PDB、源码路径或本机配置。
+
 ## v1.2.260713.1（2026-07-13）
 
 首个正式发布版本。

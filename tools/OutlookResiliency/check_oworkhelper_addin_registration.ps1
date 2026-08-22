@@ -1,10 +1,10 @@
 #Requires -Version 3.0
 <#
 .SYNOPSIS
-    Check iWorkHelper Outlook add-in registration and deployment status.
+    Check oWorkhelper Outlook add-in registration and deployment status.
 
 .DESCRIPTION
-    This script scans Windows registry for iWorkHelper add-in configuration,
+    This script scans Windows registry for oWorkhelper add-in configuration,
     collecting LoadBehavior, Manifest path, deployment details, etc.
     Read-only, no modifications.
 
@@ -12,8 +12,8 @@
     Output file path for diagnosis report. If not specified, output to console.
 
 .EXAMPLE
-    .\check_iworkhelper_addin_registration.ps1
-    .\check_iworkhelper_addin_registration.ps1 -OutputFile "C:\diagnosis.txt"
+    .\check_oworkhelper_addin_registration.ps1
+    .\check_oworkhelper_addin_registration.ps1 -OutputFile "C:\diagnosis.txt"
 
 .NOTES
     - No admin rights required (read-only)
@@ -63,7 +63,7 @@ function Check-RegistryPath {
             Write-DiagnosisLine "Status: Found items:"
             foreach ($subItem in $subItems) {
                 $name = $subItem.PSChildName
-                if ($name -match "(iWorkHelper|iWorkhelper|ThisAddIn)") {
+                if ($name -match "(oWorkHelper|oWorkhelper|ThisAddIn)") {
                     Write-DiagnosisLine ""
                     Write-DiagnosisLine "  Item: $name"
 
@@ -127,7 +127,7 @@ function Check-ResiliencyStatus {
                 $lbItems = Get-ChildItem -Path "Registry::$lbPath" -ErrorAction SilentlyContinue
                 foreach ($item in $lbItems) {
                     $name = $item.PSChildName
-                    if ($name -match "(iWorkHelper|iWorkhelper|ThisAddIn)") {
+                    if ($name -match "(oWorkHelper|oWorkhelper|ThisAddIn)") {
                         $value = Get-ItemProperty -Path "Registry::$lbPath\$name" -Name "(Default)" -ErrorAction SilentlyContinue
                         Write-DiagnosisLine "  LoadBehavior - $name : $($value.'(Default)')"
                     }
@@ -140,7 +140,7 @@ function Check-ResiliencyStatus {
                 $diItems = Get-ItemProperty -Path "Registry::$diPath" -ErrorAction SilentlyContinue
                 $found = $false
                 foreach ($prop in $diItems.PSObject.Properties) {
-                    if ($prop.Value -match "(iWorkHelper|iWorkhelper|ThisAddIn)") {
+                    if ($prop.Value -match "(oWorkHelper|oWorkhelper|ThisAddIn)") {
                         Write-DiagnosisLine "  DisabledItems found: $($prop.Value)"
                         $found = $true
                     }
@@ -156,7 +156,7 @@ function Check-ResiliencyStatus {
                 $calItems = Get-ItemProperty -Path "Registry::$calPath" -ErrorAction SilentlyContinue
                 $found = $false
                 foreach ($prop in $calItems.PSObject.Properties) {
-                    if ($prop.Value -match "(iWorkHelper|iWorkhelper|ThisAddIn)") {
+                    if ($prop.Value -match "(oWorkHelper|oWorkhelper|ThisAddIn)") {
                         Write-DiagnosisLine "  CrashingAddinList found: $($prop.Value)"
                         $found = $true
                     }
@@ -176,13 +176,13 @@ function Check-ResiliencyStatus {
 }
 
 function Check-InstalledVersions {
-    Write-DiagnosisHeader "Checking Installed iWorkHelper Versions"
+    Write-DiagnosisHeader "Checking Installed oWorkhelper Versions"
 
     $paths = @(
-        "C:\Users\*\AppData\Local\Packages\iWorkhelper*",
-        "C:\Users\*\AppData\Local\iWorkhelper*",
-        "C:\Program Files\iWorkhelper*",
-        "C:\Program Files (x86)\iWorkhelper*"
+        "C:\Users\*\AppData\Local\Packages\oWorkhelper*",
+        "C:\Users\*\AppData\Local\oWorkhelper*",
+        "C:\Program Files\oWorkhelper*",
+        "C:\Program Files (x86)\oWorkhelper*"
     )
 
     $found = $false
@@ -194,7 +194,7 @@ function Check-InstalledVersions {
                 Write-DiagnosisLine ""
                 Write-DiagnosisLine "Found: $($result.FullName)"
 
-                $dllFiles = Get-ChildItem -Path $result.FullName -Filter "iWorkhelper.dll" -Recurse -ErrorAction SilentlyContinue
+                $dllFiles = Get-ChildItem -Path $result.FullName -Filter "oWorkhelper.dll" -Recurse -ErrorAction SilentlyContinue
                 foreach ($dll in $dllFiles) {
                     $version = (Get-Item $dll.FullName).VersionInfo.FileVersion
                     Write-DiagnosisLine "  DLL: $($dll.FullName)"
@@ -205,7 +205,7 @@ function Check-InstalledVersions {
     }
 
     if (-not $found) {
-        Write-DiagnosisLine "No iWorkHelper installation found"
+        Write-DiagnosisLine "No oWorkhelper installation found"
     }
 }
 
@@ -224,7 +224,7 @@ try {
         Write-Host "Diagnosis started..."
     }
 
-    Write-DiagnosisHeader "iWorkHelper Outlook Add-in Diagnosis"
+    Write-DiagnosisHeader "oWorkhelper Outlook Add-in Diagnosis"
     Write-DiagnosisLine "Time: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
     Write-DiagnosisLine "OS: $(Get-WmiObject Win32_OperatingSystem | Select-Object -ExpandProperty Caption)"
     Write-DiagnosisLine "PowerShell: $($PSVersionTable.PSVersion)"

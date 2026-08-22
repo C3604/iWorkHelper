@@ -2,7 +2,7 @@ Imports System.IO
 Imports System.Xml.Linq
 
 ''' <summary>
-''' 百度 OCR 外部配置文件存储（%AppData%\iWorkHelper\baidu-ocr.config.xml）。
+''' 百度 OCR 外部配置文件存储（%AppData%\oWorkHelper\baidu-ocr.config.xml）。
 ''' 特性：
 '''  - **Secret Key 以 DPAPI（CurrentUser）加密保存**（带 DPAPI: 前缀），读时解密；
 '''  - API Key/接口地址/开关等普通配置明文保存（非高度敏感）；
@@ -16,6 +16,10 @@ Public Module BaiduXmlConfigStore
 
     Public Function GetPath() As String
         Return Path.Combine(PathHelper.GetAppDataRoot(), ConfigFileName)
+    End Function
+
+    Private Function GetLegacyPath() As String
+        Return Path.Combine(PathHelper.GetLegacyAppDataRoot(), ConfigFileName)
     End Function
 
     Public Function Exists() As Boolean
@@ -58,6 +62,10 @@ Public Module BaiduXmlConfigStore
     Public Function Load() As BaiduOcrOptions
         Try
             Dim p As String = GetPath()
+            If Not File.Exists(p) Then
+                ' 只读回退旧品牌目录；后续保存始终写入新目录。
+                p = GetLegacyPath()
+            End If
             If Not File.Exists(p) Then
                 Return Nothing
             End If

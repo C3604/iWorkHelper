@@ -21,7 +21,7 @@ Public Module ArchiveReportWriter
             Dim reportPath As String = Path.Combine(logDir, fileName)
 
             Dim sb As New StringBuilder()
-            sb.AppendLine("iWorkHelper 归档结果报告")
+            sb.AppendLine("oWorkhelper 归档结果报告")
             sb.AppendLine("批次 ID: " & If(batch.BatchId, "(无)"))
             sb.AppendLine("整体状态: " & batch.OverallStatus.ToString())
             sb.AppendLine(batch.BuildSummaryText())

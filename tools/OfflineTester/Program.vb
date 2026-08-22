@@ -735,7 +735,7 @@ Module OfflineTesterProgram
     End Function
 
     Private Sub PrintHelp()
-        Console.WriteLine("iWorkHelper 离线测试工具 OfflineTester")
+        Console.WriteLine("oWorkhelper 离线测试工具 OfflineTester")
         Console.WriteLine("")
         Console.WriteLine("用法:")
         Console.WriteLine("  OfflineTester.exe <pdf文件或目录> [选项]")
@@ -929,7 +929,7 @@ Friend Module SelfTestRunner
     Private Sub TestDpapi()
         Console.WriteLine("[1] DPAPI 加解密往返")
         Try
-            Dim sample As String = "iWorkHelper-DPAPI-selftest-not-a-real-key"
+            Dim sample As String = "oWorkHelper-DPAPI-selftest-not-a-real-key"
             Dim enc As String = SecretProtector.Protect(sample)
             Check("加密带 DPAPI: 前缀", SecretProtector.IsProtected(enc))
             Check("密文不等于明文", enc <> sample)
