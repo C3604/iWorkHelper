@@ -23,14 +23,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6F3776D9-6688-4936-8507-820C9B6FDF3D}</ProjectGuid>
     <OutputType>Library</OutputType>
-<<<<<<< HEAD
-    <RootNamespace>iWorkhelper</RootNamespace>
-    <AssemblyName>oWorkhelper</AssemblyName>
-=======
     <RootNamespace>oWorkHelper</RootNamespace>
     <AssemblyName>oWorkhelper</AssemblyName>
     <LoadBehavior>3</LoadBehavior>
->>>>>>> 1b5cb2d7788e08ddb78646384ca7b0118c66dc37
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <DefineConstants>VSTO40,UseOfficeInterop</DefineConstants>
     <StartupObject>
@@ -42,18 +37,13 @@
     <PublishUrl>publish\</PublishUrl>
     <InstallUrl />
     <TargetCulture>zh-chs</TargetCulture>
-<<<<<<< HEAD
     <!--
-      ClickOnce/VSTO deployment version. Build 9690 is the number of days from
-      2000-01-01 to the product release date 2026-07-13. The user-facing
+      ClickOnce/VSTO deployment version. Build 9730 is the number of days from
+      2000-01-01 to the product release date 2026-08-22. The user-facing
       a.b.YYMMDD.revision version remains in AssemblyInformationalVersion.
     -->
-    <ApplicationVersion>1.2.9690.1</ApplicationVersion>
+    <ApplicationVersion>1.2.9730.2</ApplicationVersion>
     <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
-=======
-    <ApplicationVersion>1.2.260822.1</ApplicationVersion>
-    <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
->>>>>>> 1b5cb2d7788e08ddb78646384ca7b0118c66dc37
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
@@ -130,11 +120,6 @@
     WarningLevel
       Warning level for the compiler.
   -->
-<<<<<<< HEAD
-  <!--
-    Release-Intranet: 内网版本，禁用在线解析
-  -->
-=======
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DefineConstants>
     </DefineConstants>
@@ -149,7 +134,6 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <!-- Release-Intranet: 内网版本，禁用在线解析 -->
->>>>>>> 1b5cb2d7788e08ddb78646384ca7b0118c66dc37
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Intranet|AnyCPU' ">
     <DefineConstants>INTRANET_BUILD</DefineConstants>
     <DefineDebug>false</DefineDebug>
